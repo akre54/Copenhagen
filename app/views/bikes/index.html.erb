@@ -1,0 +1,27 @@
+<h1>Listing bikes</h1>
+
+<table>
+  <tr>
+    <th>Color</th>
+    <th>Condition</th>
+    <th>Location</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @bikes.each do |bike| %>
+  <tr>
+    <td><%= bike.color %></td>
+    <td><%= bike.condition %></td>
+    <td><%= bike.location %></td>
+    <td><%= link_to 'Show', bike %></td>
+    <td><%= link_to 'Edit', edit_bike_path(bike) %></td>
+    <td><%= link_to 'Destroy', bike, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Bike', new_bike_path %>

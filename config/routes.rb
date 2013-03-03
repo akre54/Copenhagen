@@ -1,4 +1,7 @@
 Copenhagen::Application.routes.draw do
+  resources :bikes
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

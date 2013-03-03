@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Color:</b>
+  <%= @bike.color %>
+</p>
+
+<p>
+  <b>Condition:</b>
+  <%= @bike.condition %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%= @bike.location %>
+</p>
+
+
+<%= link_to 'Edit', edit_bike_path(@bike) %> |
+<%= link_to 'Back', bikes_path %>
