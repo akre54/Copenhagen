@@ -1,4 +1,7 @@
 Copenhagen::Application.routes.draw do
+  resources :locations
+
+
   resources :bikes
 
 
