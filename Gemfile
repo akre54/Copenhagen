@@ -1,10 +1,16 @@
 source 'https://rubygems.org'
 
+# base
 gem 'rails', '3.2.12'
+gem 'thin'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
+# JSON templates
+gem 'rabl'
 
+# views
+gem 'jquery-rails'
+
+# db
 gem 'pg'
 
 
@@ -14,25 +20,25 @@ group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
 
+  gem "handlebars_assets", "~> 0.12.0"
+
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
+group :development, :test do
+  gem 'sqlite3'
+  gem 'pry-rails'
+  gem 'debugger-pry', require: 'debugger/pry'
+  gem 'debugger'
 
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+  # testing
+  gem 'rspec-rails'
 
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'debugger'
+  # stubs and mocks
+  gem 'factory_girl'
+  gem 'factory_girl_rails'
+  gem 'faker'
+end
