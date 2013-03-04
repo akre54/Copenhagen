@@ -14,7 +14,7 @@
     <div class="span1"><%= bike.id %></div>
     <div class="span1"><%= bike.color %></div>
     <div class="span1"><%= bike.condition %></div>
-    <div class="span2"><%= bike.location.name %></div>
+    <div class="span2"><%= link_to bike.location.name, bike.location %></div>
     <div class="span3">
       <%= link_to 'Show', bike %>
       <%= link_to 'Edit', edit_bike_path(bike) %>
