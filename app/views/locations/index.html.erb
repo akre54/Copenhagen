@@ -8,7 +8,7 @@
 
 <ul>
 <% @locations.each do |location| %>
-  <li class="row">
+  <li class="row no-bullet">
     <div class="span1"><%= location.name %></div>
     <div class="span1"><a href="http://maps.google.com/?q=<%= location.lat %>,<%= location.long %>">Map</a></div>
     <div class="span3">
