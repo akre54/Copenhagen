@@ -1,26 +1,24 @@
 <h1>Listing locations</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Lat</th>
-    <th>Long</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<div class="row">
+  <div class="span1">Name</div>
+  <div class="span1">Location</div>
+  <div class="span3">Meta</div>
+</div>
 
+<ul>
 <% @locations.each do |location| %>
-  <tr>
-    <td><%= location.name %></td>
-    <td><%= location.lat %></td>
-    <td><%= location.long %></td>
-    <td><%= link_to 'Show', location %></td>
-    <td><%= link_to 'Edit', edit_location_path(location) %></td>
-    <td><%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+  <li class="row">
+    <div class="span1"><%= location.name %></div>
+    <div class="span1"><a href="http://maps.google.com/?q=<%= location.lat %>,<%= location.long %>">Map</a></div>
+    <div class="span3">
+      <%= link_to 'Show', location %>
+      <%= link_to 'Edit', edit_location_path(location) %>
+      <%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
+  </li>
 <% end %>
-</table>
+</ul>
 
 <br />
 
