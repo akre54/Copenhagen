@@ -1,18 +1,16 @@
 <h1>Listing locations</h1>
 
 <div class="row">
-  <div class="span1">Name</div>
+  <div class="span2">Name</div>
   <div class="span1">Location</div>
-  <div class="span3">Meta</div>
 </div>
 
-<ul>
+<ul class="no-offset">
 <% @locations.each do |location| %>
   <li class="row no-bullet">
-    <div class="span1"><%= location.name %></div>
+    <div class="span2"><%= link_to location.name, location %></div>
     <div class="span1"><a href="http://maps.google.com/?q=<%= location.lat %>,<%= location.long %>">Map</a></div>
-    <div class="span3">
-      <%= link_to 'Show', location %>
+    <div class="span2">
       <%= link_to 'Edit', edit_location_path(location) %>
       <%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %>
     </div>
@@ -22,4 +20,4 @@
 
 <br />
 
-<%= link_to 'New Location', new_location_path %>
+<%= link_to '+ New Location', new_location_path %>

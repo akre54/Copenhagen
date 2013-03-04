@@ -3,20 +3,18 @@
 <div class="row">
   <div class="span1">Bike #</div>
   <div class="span1">Color</div>
-  <div class="span1">Condition</div>
+  <div class="span3">Condition</div>
   <div class="span2">Location</div>
-  <div class="span3">Meta</div>
 </div>
 
-<ul>
+<ul class="no-offset">
 <% @bikes.each do |bike| %>
   <li class="row no-bullet">
-    <div class="span1"><%= bike.id %></div>
+    <div class="span1"><%= link_to bike.id, bike %></div>
     <div class="span1"><%= bike.color %></div>
-    <div class="span1"><%= bike.condition %></div>
+    <div class="span3"><%= bike.condition %></div>
     <div class="span2"><%= link_to bike.location.name, bike.location %></div>
-    <div class="span3">
-      <%= link_to 'Show', bike %>
+    <div class="span2">
       <%= link_to 'Edit', edit_bike_path(bike) %>
       <%= link_to 'Destroy', bike, method: :delete, data: { confirm: 'Are you sure?' } %>
     </div>
@@ -26,4 +24,4 @@
 
 <br />
 
-<%= link_to 'New Bike', new_bike_path %>
+<%= link_to '+ New Bike', new_bike_path %>

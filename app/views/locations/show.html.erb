@@ -1,15 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @location.name %>
-</p>
+<h2><%= @location.name %></h2>
 
 <p>
   <b>Bikes:</b>
   <ul>
   <% @location.bikes.each do |bike| %>
-    <li><%= bike.id %></li>
+    <li><%= link_to "##{bike.id} (#{bike.manufacturer} #{bike.model})", bike %></li>
   <% end %>
   </ul>
 </p>
