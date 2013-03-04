@@ -1,26 +1,31 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Bike -%>
+<div class="page-header">
+  <h2><%= "#{@bike.manufacturer} #{@bike.model} (Bike ##{@bike.id})" %></h2>
+</div>
 
-<h2><%= "#{@bike.manufacturer} #{@bike.model} (Bike ##{@bike.id})" %></h2>
+<%= image_tag @bike.image_url, class: 'bike-img' %>
 
-<p>
-  <%= image_tag @bike.image_url, class: 'bike-img' %>
-</p>
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:color) %>:</strong></dt>
+  <dd><%= @bike.color %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:condition) %>:</strong></dt>
+  <dd><%= @bike.condition %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:location_id) %>:</strong></dt>
+  <dd><%= link_to @bike.location.name, @bike.location %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:manufacturer) %>:</strong></dt>
+  <dd><%= @bike.manufacturer %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:model) %>:</strong></dt>
+  <dd><%= @bike.model %></dd>
+</dl>
 
-<p>
-  <b>Color:</b>
-  <%= @bike.color %>
-</p>
-
-<p>
-  <b>Condition:</b>
-  <%= @bike.condition %>
-</p>
-
-<p>
-  <b>Location:</b>
-  <%= link_to @bike.location.name, @bike.location %>
-</p>
-
-
-<%= link_to 'Edit', edit_bike_path(@bike) %> |
-<%= link_to 'Back', bikes_path %>
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              bikes_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_bike_path(@bike), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              bike_path(@bike),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
