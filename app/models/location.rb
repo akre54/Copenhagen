@@ -1,5 +1,5 @@
 class Location < ActiveRecord::Base
-  attr_accessible :lat, :lng, :name
+  attr_accessible :latlong, :name, :address, :phone, :hours, :num_helmets
 
   has_many :bikes
 end

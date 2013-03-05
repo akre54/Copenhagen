@@ -9,7 +9,7 @@
 <% @locations.sort{|a,b| a.name <=> b.name }.each do |location| %>
   <li class="row no-bullet">
     <div class="span2"><%= link_to location.name, location %></div>
-    <div class="span1"><%= link_to "Map", "http://maps.google.com/?q=#{location.lat},#{location.lng}" %></div>
+    <div class="span1"><%= link_to "Map", "http://maps.google.com/?q=#{location.latlong}" %></div>
     <div class="span2">
       <%= link_to 'Edit', edit_location_path(location) %>
       <%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %>
