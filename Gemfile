@@ -4,9 +4,6 @@ source 'http://rubygems.org'
 gem 'rails', '3.2.12'
 gem 'thin'
 
-# JSON templates
-gem 'rabl'
-
 # views
 gem 'jquery-rails'
 gem 'bootstrap-sass'
@@ -32,7 +29,6 @@ group :assets do
 end
 
 group :development, :test do
-  gem 'sqlite3'
   gem 'pry-rails'
   gem 'debugger-pry', require: 'debugger/pry'
   gem 'debugger'
