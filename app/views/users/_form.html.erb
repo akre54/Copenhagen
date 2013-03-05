@@ -32,8 +32,8 @@
     <%= f.text_field :email_address %>
   </div>
   <div class="field">
-    <%= f.label :type %><br />
-    <%= f.select :type, ['undergraduate', 'graduate', 'faculty', 'staff'] %>
+    <%= f.label :affilition %><br />
+    <%= f.select :affilition, User::AFFILIATIONS %>
   </div>
   <div class="actions">
     <%= f.submit %>
