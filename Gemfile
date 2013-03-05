@@ -11,7 +11,6 @@ gem 'bootstrap-sass'
 # db
 gem 'pg'
 
-
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -32,6 +31,8 @@ group :development, :test do
   gem 'pry-rails'
   gem 'debugger-pry', require: 'debugger/pry'
   gem 'debugger'
+
+  gem 'yaml_db'
 
   # testing
   gem 'rspec-rails'
