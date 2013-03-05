@@ -9,7 +9,7 @@
       <th>Color</th>
       <th>Condition</th>
       <th>Location</th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -22,7 +22,7 @@
         <td>
           <%= link_to 'Edit', edit_bike_path(bike), :class => 'btn btn-mini' %>
           <%= link_to 'Delete', bike_path(bike), :method => :delete,
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :data => { :confirm => 'Are you sure?' },
               :class => 'btn btn-mini btn-danger' %>
         </td>
       </tr>
@@ -30,6 +30,4 @@
   </tbody>
 </table>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_bike_path,
-            :class => 'btn btn-primary' %>
+<%= link_to 'New', new_bike_path, :class => 'btn btn-primary' %>
