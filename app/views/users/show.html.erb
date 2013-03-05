@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Netid:</b>
+  <%= @user.netid %>
+</p>
+
+<p>
+  <b>First name:</b>
+  <%= @user.first_name %>
+</p>
+
+<p>
+  <b>Last name:</b>
+  <%= @user.last_name %>
+</p>
+
+<p>
+  <b>Year of graduation:</b>
+  <%= @user.year_of_graduation %>
+</p>
+
+<p>
+  <b>Email address:</b>
+  <%= @user.email_address %>
+</p>
+
+<p>
+  <b>Type:</b>
+  <%= @user.type %>
+</p>
+
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

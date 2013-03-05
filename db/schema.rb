@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130304012153) do
+ActiveRecord::Schema.define(:version => 20130305021547) do
 
   create_table "bikes", :force => true do |t|
     t.string   "color"
@@ -30,6 +30,17 @@ ActiveRecord::Schema.define(:version => 20130304012153) do
     t.float    "lng"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "netid"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "year_of_graduation"
+    t.string   "email_address"
+    t.string   "type"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
   end
 
 end

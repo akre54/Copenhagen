@@ -1,4 +1,7 @@
 Copenhagen::Application.routes.draw do
+  resources :users
+
+
   resources :locations
 
 
