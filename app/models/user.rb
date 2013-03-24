@@ -3,11 +3,15 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, :confirmable,
+         :token_authenticatable, :timeoutable
 
-  # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me,
-                  :first_name, :last_name, :netid, :affilition, :year_of_graduation
+  attr_readonly :email, :netid
+
+  attr_accessible :remember_me, :first_name, :last_name, :affilition,
+                  :year_of_graduation
+
+  attr_protected :password, :password_confirmation
 
 
   AFFILIATIONS = %w(undergraduate graduate faculty staff).freeze
