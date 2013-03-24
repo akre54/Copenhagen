@@ -1,6 +1,8 @@
 class CheckoutsController < ApplicationController
   before_filter :require_login
 
+  before_filter :require_admin, only: [:update, :destroy]
+
   # GET /Checkouts
   # GET /Checkouts.json
   def index
@@ -60,10 +62,6 @@ class CheckoutsController < ApplicationController
   def update
     @checkout = Checkout.find(params[:id])
 
-    unless current_user.admin?
-      format.html { redirect_to @checkout, status: :unauthorized, notice: 'You are not authorized to perform that action.'}
-    end
-
     respond_to do |format|
       if @checkout.update_attributes(params[:checkout])
         format.html { redirect_to @checkout, notice: 'Checkout was successfully updated.' }
@@ -80,10 +78,6 @@ class CheckoutsController < ApplicationController
   def destroy
     @checkout = Checkout.find(params[:id])
 
-    unless current_user.admin?
-      format.html { redirect_to @checkout, status: :unauthorized, notice: 'You are not authorized to perform that action.'}
-    end
-
     @checkout.destroy
 
     respond_to do |format|
@@ -97,7 +91,15 @@ class CheckoutsController < ApplicationController
 
   def require_login
     unless user_signed_in?
-      format.html { redirect_to new_user_session_path, status: :unauthorized, notice: 'You are not authorized to perform that action.'}
+      respond_to do |format|
+        format.html { redirect_to new_user_session_path, status: :unauthorized, notice: 'You are not authorized to perform that action.'}
+      end
+    end
+  end
+
+  def require_admin
+    unless current_user.admin?
+      format.html { redirect_to checkouts_path, status: :unauthorized, notice: 'You are not authorized to perform that action.'}
     end
   end
 end
