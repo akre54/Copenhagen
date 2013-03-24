@@ -8,4 +8,9 @@ class Bike < ActiveRecord::Base
   belongs_to :location
 
   has_many :checkouts
+
+  def checked_out_to
+    last_checkout = self.checkouts.where(returned_at: nil).limit(1).first
+    last_checkout.user if last_checkout
+  end
 end
