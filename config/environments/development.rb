@@ -34,4 +34,7 @@ Copenhagen::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  # Make devise happy; options for email resets, etc.
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 end
