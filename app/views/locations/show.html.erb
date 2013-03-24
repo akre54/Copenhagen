@@ -2,14 +2,17 @@
 
 <h2><%= @location.name %></h2>
 
-<p>
-  <b>Bikes:</b>
+<div>
+  <h4>Bikes:</h4>
   <ul>
   <% @location.bikes.each do |bike| %>
     <li><%= link_to "##{bike.id} (#{bike.manufacturer} #{bike.model})", bike %></li>
   <% end %>
   </ul>
-</p>
+</div>
+<div>
+  <h4>Helmets: <%= @location.num_helmets %></h4>
+</div>
 
 <%= link_to 'Edit', edit_location_path(@location) %> |
 <%= link_to 'Back', locations_path %>
