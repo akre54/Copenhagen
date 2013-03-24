@@ -24,6 +24,7 @@
             <li><%= link_to "Add/Edit locations", locations_path %></li>
             <li><%= link_to "Contact Us" %></li>
           </ul>
+          <%= link_to "Log in", new_user_session_path, class: "btn btn-primary" %>
         </div>
       </div>
     </div>
@@ -31,7 +32,7 @@
 
   <div class="container">
     <% flash.each do |name, msg| %>
-      <%= content_tag(:div, msg, class: "assert alert-#{name}") %>
+      <%= content_tag(:div, msg, class: "alert alert-#{name}") %>
     <% end %>
     <div class="row">
       <div class="span12"><%= yield %></div>
