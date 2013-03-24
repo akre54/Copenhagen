@@ -11,8 +11,14 @@ class User < ActiveRecord::Base
 
   attr_protected :password, :password_confirmation, :admin
 
+  has_many :checkouts
+
 
   AFFILIATIONS = %w(undergraduate graduate faculty staff).freeze
 
   validates_inclusion_of :affilition, in: AFFILIATIONS
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end

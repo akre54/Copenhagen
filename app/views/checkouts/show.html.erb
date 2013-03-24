@@ -1,0 +1,12 @@
+<p id="notice"><%= notice %></p>
+
+<h2>Checkout Listing</h2>
+
+<div>
+  <h4>Information</h4>
+  <p>
+     Bike <%= link_to @checkout.bike.id, @checkout.bike %>
+     was checked out to <%= link_to @checkout.user.full_name, @checkout.user %>
+     on <%= l @checkout.created_at %>
+   </p>
+</div>

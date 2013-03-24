@@ -1,0 +1,103 @@
+class CheckoutsController < ApplicationController
+  before_filter :require_login
+
+  # GET /Checkouts
+  # GET /Checkouts.json
+  def index
+    @checkouts = Checkout.all
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @Checkouts }
+    end
+  end
+
+  # GET /Checkouts/1
+  # GET /Checkouts/1.json
+  def show
+    @checkout = Checkout.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @checkout }
+    end
+  end
+
+  # GET /Checkouts/new
+  # GET /Checkouts/new.json
+  def new
+    @checkout = Checkout.new
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @checkout }
+    end
+  end
+
+  # GET /Checkouts/1/edit
+  def edit
+    @checkout = Checkout.find(params[:id])
+  end
+
+  # POST /Checkouts
+  # POST /Checkouts.json
+  def create
+    @checkout = Checkout.new(params[:checkout])
+
+    respond_to do |format|
+      if @checkout.save
+        format.html { redirect_to @checkout, notice: 'Checkout was successfully created.' }
+        format.json { render json: @checkout, status: :created, checkout: @checkout }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @checkout.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # PUT /Checkouts/1
+  # PUT /Checkouts/1.json
+  def update
+    @checkout = Checkout.find(params[:id])
+
+    unless current_user.admin?
+      format.html { redirect_to @checkout, status: :unauthorized, notice: 'You are not authorized to perform that action.'}
+    end
+
+    respond_to do |format|
+      if @checkout.update_attributes(params[:checkout])
+        format.html { redirect_to @checkout, notice: 'Checkout was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @checkout.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /Checkouts/1
+  # DELETE /Checkouts/1.json
+  def destroy
+    @checkout = Checkout.find(params[:id])
+
+    unless current_user.admin?
+      format.html { redirect_to @checkout, status: :unauthorized, notice: 'You are not authorized to perform that action.'}
+    end
+
+    @checkout.destroy
+
+    respond_to do |format|
+      format.html { redirect_to Checkouts_url }
+      format.json { head :no_content }
+    end
+  end
+
+
+  private
+
+  def require_login
+    unless user_signed_in?
+      format.html { redirect_to new_user_session_path, status: :unauthorized, notice: 'You are not authorized to perform that action.'}
+    end
+  end
+end

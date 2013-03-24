@@ -4,4 +4,6 @@ class Bike < ActiveRecord::Base
   validates_inclusion_of :condition, in: %w( fucked operational offline )
 
   belongs_to :location
+
+  has_many :checkouts
 end
