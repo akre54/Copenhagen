@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130324054801) do
+ActiveRecord::Schema.define(:version => 20130324062737) do
 
   create_table "bikes", :force => true do |t|
     t.string   "color"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(:version => 20130324054801) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.integer  "location_id", :null => false
+    t.datetime "due_at"
   end
 
   add_index "checkouts", ["bike_id"], :name => "index_checkouts_on_bike_id"
