@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   attr_accessible :remember_me, :first_name, :last_name, :affilition,
                   :year_of_graduation
 
-  attr_protected :password, :password_confirmation
+  attr_protected :password, :password_confirmation, :admin
 
 
   AFFILIATIONS = %w(undergraduate graduate faculty staff).freeze
