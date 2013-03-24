@@ -8,6 +8,9 @@ gem 'thin'
 gem 'jquery-rails'
 gem 'bootstrap-sass'
 
+# auth
+gem 'devise'
+
 # db
 gem 'pg'
 
