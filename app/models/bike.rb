@@ -3,6 +3,8 @@ class Bike < ActiveRecord::Base
 
   validates_inclusion_of :condition, in: %w( fucked operational offline )
 
+  scope :checked_out, joins(:checkouts).where(checkouts: {returned_at: nil})
+
   belongs_to :location
 
   has_many :checkouts
