@@ -1,4 +1,5 @@
 class CheckoutsController < ApplicationController
+  before_filter :require_login
 
   before_filter :require_admin, only: [:update, :destroy]
 

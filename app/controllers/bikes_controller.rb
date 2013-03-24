@@ -1,4 +1,6 @@
 class BikesController < ApplicationController
+  before_filter :require_login
+
   # GET /bikes
   # GET /bikes.json
   def index
