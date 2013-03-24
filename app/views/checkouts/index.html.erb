@@ -10,9 +10,9 @@
 <ul class="no-offset">
 <% @checkouts.sort{|a,b| a.created_at <=> b.created_at }.each do |checkout| %>
   <li class="row no-bullet">
-    <div class="span1"><%= link_to checkout.bike.id checkout.bike %></div>
-    <div class="span2"><%= link_to location.name, location %></div>
-    <div class="span1"><%= link_to checkout.user.full_name checkout.user %></div>
+    <div class="span1"><%= link_to checkout.bike.id, checkout.bike %></div>
+    <div class="span2"><%= link_to checkout.location.name, checkout.location %></div>
+    <div class="span1"><%= link_to checkout.user.full_name, checkout.user %></div>
     <div class="span1"><%= l checkout.created_at %></div>
   </li>
 <% end %>
