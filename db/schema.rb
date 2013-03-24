@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130324044205) do
+ActiveRecord::Schema.define(:version => 20130324054801) do
 
   create_table "bikes", :force => true do |t|
     t.string   "color"
@@ -25,13 +25,15 @@ ActiveRecord::Schema.define(:version => 20130324044205) do
   end
 
   create_table "checkouts", :force => true do |t|
-    t.integer  "user_id",    :null => false
-    t.integer  "bike_id",    :null => false
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "user_id",     :null => false
+    t.integer  "bike_id",     :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "location_id", :null => false
   end
 
   add_index "checkouts", ["bike_id"], :name => "index_checkouts_on_bike_id"
+  add_index "checkouts", ["location_id"], :name => "index_checkouts_on_location_id"
   add_index "checkouts", ["user_id"], :name => "index_checkouts_on_user_id"
 
   create_table "locations", :force => true do |t|
