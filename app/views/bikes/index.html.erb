@@ -8,7 +8,9 @@
       <th>Bike #</th>
       <th>Color</th>
       <th>Condition</th>
-      <th>Location</th>
+      <% if current_user.admin? %>
+        <th>Location</th>
+      <% end %>
       <th>Actions</th>
     </tr>
   </thead>
@@ -18,13 +20,17 @@
         <td><%= link_to "##{bike.id} #{bike.manufacturer} #{bike.model}", bike_path(bike) %></td>
         <td><%= bike.color %></td>
         <td><%= bike.condition %></td>
-        <td><%= link_to "#{bike.location.name}", bike.location %></td>
-        <td>
-          <%= link_to 'Edit', edit_bike_path(bike), :class => 'btn btn-mini' %>
-          <%= link_to 'Delete', bike_path(bike), :method => :delete,
-              :data => { :confirm => 'Are you sure?' },
-              :class => 'btn btn-mini btn-danger' %>
-        </td>
+        <% if current_user.admin? %>
+          <td><%= link_to "#{bike.location.name}", bike.location %></td>
+          <td>
+            <%= link_to 'Edit', edit_bike_path(bike), :class => 'btn btn-mini' %>
+            <%= link_to 'Delete', bike_path(bike), :method => :delete,
+                :data => { :confirm => 'Are you sure?' },
+                :class => 'btn btn-mini btn-danger' %>
+          </td>
+        <% else %>
+          <td><%= link_to 'Checkout', new_checkout_path %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

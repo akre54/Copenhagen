@@ -1,5 +1,4 @@
 class CheckoutsController < ApplicationController
-  before_filter :require_login
 
   before_filter :require_admin, only: [:update, :destroy]
 
@@ -10,7 +9,7 @@ class CheckoutsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @Checkouts }
+      format.json { render json: @checkouts }
     end
   end
 
@@ -88,14 +87,6 @@ class CheckoutsController < ApplicationController
 
 
   private
-
-  def require_login
-    unless user_signed_in?
-      respond_to do |format|
-        format.html { redirect_to new_user_session_path, status: :unauthorized, notice: 'You are not authorized to perform that action.'}
-      end
-    end
-  end
 
   def require_admin
     unless current_user.admin?

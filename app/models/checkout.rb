@@ -4,6 +4,8 @@ class Checkout < ActiveRecord::Base
   belongs_to :bike
   belongs_to :location
 
+  scope :latest, lambda{|n| order(:created_at).limit(n)}
+
   after_create :update_due_date
 
   def update_due_date
