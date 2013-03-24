@@ -85,13 +85,4 @@ class CheckoutsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
-
-  private
-
-  def require_admin
-    unless current_user.admin?
-      format.html { redirect_to checkouts_path, status: :unauthorized, notice: 'You are not authorized to perform that action.'}
-    end
-  end
 end

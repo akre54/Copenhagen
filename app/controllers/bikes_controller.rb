@@ -1,6 +1,8 @@
 class BikesController < ApplicationController
   before_filter :require_login
 
+  before_filter :require_admin, except: [:index, :show]
+
   # GET /bikes
   # GET /bikes.json
   def index
