@@ -4,4 +4,21 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-Copenhagen::Application.config.secret_token = '0a8b500ff3730f03490ff4065d963ca9640cf48c2ffca48df254cd017238c9adb90b8b8b40b6913d764058f9eea5435fea1b0699de97ce5f61c13d41a233c27e'
+
+
+if ENV["SECRET_TOKEN"].blank?
+  if Rails.env.production?
+    raise "You must set ENV[\"SECRET_TOKEN\"] in your app's config vars"
+  elsif Rails.env.test?
+    # Generate the key and test away
+    ENV["SECRET_TOKEN"] = Copenhagen::Application.config.secret_token = SecureRandom.hex(30)
+  else
+    config_file = File.expand_path(File.join(Rails.root, '/config/config.yml'))
+    config = YAML.load_file(config_file)
+    # Generate the key, set it for the current environment, update the yaml file and move on
+    ENV["SECRET_TOKEN"] = config[Rails.env]['SECRET_TOKEN'] = SecureRandom.hex(30)
+    File.open(config_file, 'w') { |file| file.write(config.to_yaml) }
+  end
+end
+
+Copenhagen::Application.config.secret_token = ENV["SECRET_TOKEN"]

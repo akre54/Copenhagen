@@ -17,6 +17,10 @@
 # Ignore specific db
 /config/database.yml
 
+
+# Ignore environment variables (generated on new install)
+/config/config.yml
+
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
