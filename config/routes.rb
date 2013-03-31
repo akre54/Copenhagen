@@ -4,7 +4,7 @@ Copenhagen::Application.routes.draw do
   resources :users
 
 
-  resources :locations
+  resources :locations, only: [:show, :index]
 
 
   resources :bikes
