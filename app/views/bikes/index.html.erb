@@ -11,7 +11,7 @@
       <% if current_user.admin? %>
         <th>Location</th>
       <% end %>
-      <th>Actions</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -23,10 +23,13 @@
         <% if current_user.admin? %>
           <td><%= link_to "#{bike.location.name}", bike.location %></td>
           <td>
-            <%= link_to 'Edit', edit_bike_path(bike), :class => 'btn btn-mini' %>
-            <%= link_to 'Delete', bike_path(bike), :method => :delete,
-                :data => { :confirm => 'Are you sure?' },
-                :class => 'btn btn-mini btn-danger' %>
+            <div class="btn-group">
+              <a class="btn dropdown-toggle btn-mini" data-toggle="dropdown" href="#">Admin <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="<%= edit_bike_path(bike) %>"><i class="icon-pencil"></i> Edit</a></li>
+                <li><a href="<%= bike_path(bike) %>" data-method="delete" data-confirm="Are you sure?" rel="nofollow"><i class="icon-trash"></i> Delete</a></li>
+              </ul>
+            </div>
           </td>
         <% else %>
           <td><%= link_to 'Checkout', new_checkout_path %></td>
