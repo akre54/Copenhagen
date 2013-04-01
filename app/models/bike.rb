@@ -9,8 +9,8 @@ class Bike < ActiveRecord::Base
 
   has_many :checkouts
 
-  def checkout_to(user)
-    self.checkouts << Checkout.new(user: user, location: self.location)
+  def checkout_to(biker)
+    self.checkouts << Checkout.new(biker: biker, location: self.location)
   end
 
   def checkin
@@ -34,6 +34,6 @@ class Bike < ActiveRecord::Base
 
   def checked_out_to
     last_checkout = self.active_checkout
-    last_checkout.user if last_checkout
+    last_checkout.biker if last_checkout
   end
 end

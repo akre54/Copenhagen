@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>First name:</b>
+  <%= @biker.first_name %>
+</p>
+
+<p>
+  <b>Last name:</b>
+  <%= @biker.last_name %>
+</p>
+
+<p>
+  <b>Netid:</b>
+  <%= @biker.netid %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @biker.email %>
+</p>
+
+<p>
+  <b>Affiliation:</b>
+  <%= @biker.affiliation %>
+</p>
+
+<p>
+  <b>Year of graduation:</b>
+  <%= @biker.year_of_graduation %>
+</p>
+
+
+<%= link_to 'Edit', edit_biker_path(@biker) %> |
+<%= link_to 'Back', bikers_path %>

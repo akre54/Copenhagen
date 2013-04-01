@@ -12,7 +12,7 @@
 <% @checkouts.sort{|a,b| a.created_at <=> b.created_at }.each do |checkout| %>
   <li class="row no-bullet">
     <div class="span1"><%= link_to checkout.bike.id, checkout.bike %></div>
-    <div class="span2"><%= link_to checkout.user.full_name, checkout.user %></div>
+    <div class="span2"><%= link_to checkout.biker.full_name, checkout.biker %></div>
     <div class="span2"><%= link_to checkout.location.name, checkout.location %></div>
     <div class="span3"><%= checkout.created_at.strftime("%B %d at %I:%M %p") %></div>
     <div class="span2"><%= checkout.due_at.strftime("%B %d") %></div>

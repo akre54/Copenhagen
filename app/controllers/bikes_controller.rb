@@ -34,11 +34,11 @@ class BikesController < ApplicationController
   # POST /bikes/1/checkout.json
   def checkout
     @bike = Bike.find(params[:id])
-    @user = User.find(params[:user_id])
+    @biker = Biker.find(params[:biker_id])
 
     respond_to do |format|
-      if @bike.checkout_to @user
-        format.html { redirect_to @bike, notice: "Bike has been checked out. Please remind #{@user.first_name} to bike responsibly!" }
+      if @bike.checkout_to @biker
+        format.html { redirect_to @bike, notice: "Bike has been checked out. Please remind #{@biker.first_name} to bike responsibly!" }
         format.json { render json: @bike }
       else
         # TODO
@@ -52,7 +52,7 @@ class BikesController < ApplicationController
     @bike = Bike.find(params[:id])
     @bike.checkin
 
-    last_biker_name = @bike.last_checkout.user.first_name
+    last_biker_name = @bike.last_checkout.biker.first_name
 
     respond_to do |format|
       format.html { redirect_to @bike, notice: "Bike has been checked in. Please thank #{last_biker_name} for their participation!" }

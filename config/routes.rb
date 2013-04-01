@@ -1,4 +1,7 @@
 Copenhagen::Application.routes.draw do
+  resources :bikers
+
+
   devise_for :users
 
   resources :users

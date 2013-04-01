@@ -5,8 +5,8 @@
 <div>
   <h4>Information</h4>
   <p>
-     Bike <%= link_to @checkout.bike.id, @checkout.bike %>
-     was checked out to <%= link_to @checkout.user.full_name, @checkout.user %>
+     Bike #<%= link_to @checkout.bike.id, @checkout.bike %>
+     was checked out to <%= link_to @checkout.biker.full_name, @checkout.biker %>
      on <%= l @checkout.created_at %>
    </p>
 </div>
