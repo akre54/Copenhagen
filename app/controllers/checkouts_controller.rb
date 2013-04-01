@@ -40,7 +40,9 @@ class CheckoutsController < ApplicationController
   # POST /Checkouts
   # POST /Checkouts.json
   def create
-    @checkout = Checkout.new(params[:checkout])
+    @biker = Biker.find_by_net_id(params[:checkout][:biker_netid])
+    @bike = Bike.find params[:checkout][:bike_id]
+    @bike.checkout_to @biker
 
     respond_to do |format|
       if @checkout.save
