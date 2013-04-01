@@ -9,18 +9,31 @@ class Bike < ActiveRecord::Base
 
   has_many :checkouts
 
-  def checkout(user)
+  def checkout_to(user)
     self.checkouts << Checkout.new(user: user, location: self.location)
   end
 
   def checkin
-    last_checkout = self.checkouts.where(returned_at: nil).limit(1).first
-    last_checkout.returned_at = Time.now
-    last_checkout.save!
+    @last_checkout = self.active_checkout
+    return unless @last_checkout
+    @last_checkout.returned_at = Time.now
+    @last_checkout.save!
+  end
+
+  def active_checkout
+    self.checkouts.where(returned_at: nil).limit(1).first
+  end
+
+  def last_checkout
+    self.checkouts.order('created_at DESC').limit(1).first
+  end
+
+  def checked_out?
+    self.active_checkout != nil
   end
 
   def checked_out_to
-    last_checkout = self.checkouts.where(returned_at: nil).limit(1).first
+    last_checkout = self.active_checkout
     last_checkout.user if last_checkout
   end
 end

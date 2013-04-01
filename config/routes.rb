@@ -7,7 +7,14 @@ Copenhagen::Application.routes.draw do
   resources :locations, only: [:show, :index]
 
 
-  resources :bikes
+  resources :bikes do
+    member do
+      post :checkout
+      post :checkin
+    end
+
+    resources :checkouts, only: [:new]
+  end
 
 
   resources :checkouts

@@ -1,7 +1,7 @@
 class BikesController < ApplicationController
   before_filter :require_login
 
-  before_filter :require_admin, except: [:index, :show]
+  before_filter :require_admin, except: [:index, :show, :checkout, :checkin]
 
   # GET /bikes
   # GET /bikes.json
@@ -23,6 +23,42 @@ class BikesController < ApplicationController
       format.html # show.html.erb
       format.json { render json: @bike }
     end
+  end
+
+  # GET /bikes/1/checkout
+  # GET /bikes/1/checkout.json
+  def
+
+
+  # POST /bikes/1/checkout
+  # POST /bikes/1/checkout.json
+  def checkout
+    @bike = Bike.find(params[:id])
+    @user = User.find(params[:user_id])
+
+    respond_to do |format|
+      if @bike.checkout_to @user
+        format.html { redirect_to @bike, notice: "Bike has been checked out. Please remind #{@user.first_name} to bike responsibly!" }
+        format.json { render json: @bike }
+      else
+        # TODO
+      end
+    end
+  end
+
+  # POST /bikes/1/checkin
+  # POST /bikes/1/checkin.json
+  def checkin
+    @bike = Bike.find(params[:id])
+    @bike.checkin
+
+    last_biker_name = @bike.last_checkout.user.first_name
+
+    respond_to do |format|
+      format.html { redirect_to @bike, notice: "Bike has been checked in. Please thank #{last_biker_name} for their participation!" }
+      format.json { render json: @bike }
+    end
+
   end
 
   # GET /bikes/new
