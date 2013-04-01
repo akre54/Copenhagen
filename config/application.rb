@@ -63,6 +63,9 @@ module Copenhagen
     # and assets precompilation
     config.assets.initialize_on_precompile = false
 
+    # Add bower components to assets path
+    config.assets.paths << Rails.root.join('vendor', 'assets', 'components')
+
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
   end
