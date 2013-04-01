@@ -29,6 +29,7 @@ class CheckoutsController < ApplicationController
   # GET /Checkouts/new.json
   def new
     @checkout = Checkout.new
+    @bike = Bike.find(params[:bike_id]) if params[:bike_id]
 
     respond_to do |format|
       format.html # new.html.erb
