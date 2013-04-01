@@ -1,4 +1,7 @@
 class BikersController < ApplicationController
+  before_filter :require_login
+  before_filter :require_admin
+
   # GET /bikers
   # GET /bikers.json
   def index
