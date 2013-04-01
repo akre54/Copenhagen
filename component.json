@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "dependencies": {
     "jquery": "~1.9.1",
+    "jquery-ujs": "git@github.com:rails/jquery-ujs.git",
     "underscore": "~1.4.4"
   }
 }

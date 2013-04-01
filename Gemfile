@@ -5,7 +5,6 @@ gem 'rails', '3.2.12'
 gem 'thin'
 
 # views
-gem 'jquery-rails'
 gem 'bootstrap-sass'
 
 # auth
