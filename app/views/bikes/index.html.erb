@@ -18,7 +18,7 @@
   <tbody>
     <% @bikes.each do |bike| %>
       <tr>
-        <td><%= link_to "##{bike.id} #{bike.manufacturer} #{bike.model}", bike_path(bike) %></td>
+        <td><%= link_to bike, bike_path(bike) %></td>
         <td><%= bike.color %></td>
         <td><%= bike.condition %></td>
         <td><%= bike.checked_out? ? link_to(bike.checked_out_to.full_name, bike.checked_out_to) : 'no' %></td>

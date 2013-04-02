@@ -12,7 +12,7 @@
   <tbody>
 <% @bikes.each do |bike| %>
   <tr>
-    <td class="<%= 'info' if bike.checked_out?  %>"><%= link_to bike.full_label, bike %></td>
+    <td class="<%= 'info' if bike.checked_out?  %>"><%= link_to bike, bike %></td>
   </tr>
 <% end %>
   </tbody>

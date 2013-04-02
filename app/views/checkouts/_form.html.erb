@@ -16,7 +16,7 @@
       <%= hidden_field_tag :bike_id, @bike.id %>
     <% else %>
       <label for="checkout_bike_id">Bike:</label><br />
-      <%= collection_select :checkout, :bike_id, @bikes, :id, :full_label, prompt: true %>
+      <%= collection_select :checkout, :bike_id, @bikes, :id, :to_s, prompt: true %>
     <% end %>
   </div>
 
