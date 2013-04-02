@@ -1,14 +1,9 @@
 Copenhagen::Application.routes.draw do
-  resources :bikers
-
-
   devise_for :users, path_names: { sign_in: 'login', sign_out: 'logout' }
 
-  resources :users
-
+  resources :bikers, :users, :checkouts
 
   resources :locations, only: [:show, :index]
-
 
   resources :bikes do
     member do
@@ -16,11 +11,8 @@ Copenhagen::Application.routes.draw do
       post :checkin
     end
 
-    resources :checkouts, only: [:new]
+    resources :checkouts, only: [:new, :index]
   end
-
-
-  resources :checkouts
 
 
   # The priority is based upon order of creation:
