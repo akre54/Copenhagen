@@ -6,7 +6,7 @@ class BikesController < ApplicationController
   # GET /bikes
   # GET /bikes.json
   def index
-    @bikes = Bike.all
+    @bikes = Bike.order(:id)
 
     respond_to do |format|
       format.html # index.html.erb

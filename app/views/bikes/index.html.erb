@@ -15,7 +15,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @bikes.sort{|a,b| a.id <=> b.id }.each do |bike| %>
+    <% @bikes.each do |bike| %>
       <tr>
         <td><%= link_to "##{bike.id} #{bike.manufacturer} #{bike.model}", bike_path(bike) %></td>
         <td><%= bike.color %></td>
