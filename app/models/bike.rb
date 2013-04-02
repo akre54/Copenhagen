@@ -19,7 +19,7 @@ class Bike < ActiveRecord::Base
   end
 
   def active_checkout
-    self.checked_out.limit(1).first
+    self.checkouts.checked_out.limit(1).first
   end
 
   def last_checkout
