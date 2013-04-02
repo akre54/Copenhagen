@@ -14,6 +14,7 @@ class LocationsController < ApplicationController
   # GET /locations/1.json
   def show
     @location = Location.find(params[:id])
+    @bikes = @location.bikes
 
     respond_to do |format|
       format.html # show.html.erb

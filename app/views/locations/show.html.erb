@@ -2,14 +2,22 @@
 
 <h2><%= @location.name %></h2>
 
-<div>
-  <h4>Bikes:</h4>
-  <ul>
-  <% @location.bikes.each do |bike| %>
-    <li><%= link_to "##{bike.id} (#{bike.manufacturer} #{bike.model})", bike %></li>
-  <% end %>
-  </ul>
-</div>
+<h4>Bikes:</h4>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Info</th>
+    </tr>
+  </thead>
+  <tbody>
+<% @bikes.each do |bike| %>
+  <tr>
+    <td class="<%= 'info' if bike.checked_out?  %>"><%= link_to bike.full_label, bike %></td>
+  </tr>
+<% end %>
+  </tbody>
+</table>
+
 <div>
   <h4>Helmets: <%= @location.num_helmets %></h4>
 </div>
