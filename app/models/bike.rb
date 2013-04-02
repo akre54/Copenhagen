@@ -36,4 +36,8 @@ class Bike < ActiveRecord::Base
     last_checkout = self.active_checkout
     last_checkout.biker if last_checkout
   end
+
+  def select_label
+    "##{self.id} #{self.manufacturer} #{self.model}"
+  end
 end

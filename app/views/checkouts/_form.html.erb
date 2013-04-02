@@ -12,7 +12,16 @@
   <% end %>
 
   <div class="field">
-    <label for="checkout_biker_netid">Biker</label><br />
+    <% if @bike %>
+      <%= hidden_field_tag :bike_id, @bike.id %>
+    <% else %>
+      <label for="checkout_bike_id">Bike:</label><br />
+      <%= collection_select :checkout, :bike_id, @bikes, :id, :select_label, prompt: true %>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <label for="checkout_biker_netid">Biker:</label><br />
     <input id="checkout_biker_netid" name="checkout[biker_netid]" size="30" type="text" />
   </div>
 
