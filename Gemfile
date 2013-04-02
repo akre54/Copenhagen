@@ -36,6 +36,8 @@ group :development, :test do
 
   gem 'yaml_db'
 
+  gem 'meta_request'
+
   # testing
   gem 'rspec-rails'
 
