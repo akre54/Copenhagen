@@ -5,7 +5,7 @@ class BikersController < ApplicationController
   # GET /bikers
   # GET /bikers.json
   def index
-    @bikers = Biker.all
+    @bikers = Biker.order(:netid)
 
     respond_to do |format|
       format.html # index.html.erb
