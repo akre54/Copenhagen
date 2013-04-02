@@ -7,6 +7,6 @@ class Checkout < ActiveRecord::Base
   scope :latest, lambda{|n| order(:created_at).limit(n)}
 
   before_create do
-    self.due_at = date.Today + 2.days
+    self.due_at = Date.today + 2.days
   end
 end
