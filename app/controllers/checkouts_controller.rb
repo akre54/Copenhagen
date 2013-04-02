@@ -6,7 +6,11 @@ class CheckoutsController < ApplicationController
   # GET /Checkouts
   # GET /Checkouts.json
   def index
-    @checkouts = Checkout.all
+    if params[:bike_id]
+      @checkouts = Bike.find(params[:bike_id]).checkouts.order('created_at DESC')
+    else
+      @checkouts = Checkout.order('created_at DESC')
+    end
 
     respond_to do |format|
       format.html # index.html.erb
