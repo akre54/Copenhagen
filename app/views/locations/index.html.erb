@@ -1,20 +1,22 @@
 <h1>Listing locations</h1>
 
-<div class="row">
-  <div class="span2">Name</div>
-  <div class="span1">Location</div>
-</div>
-
-<ul class="no-offset">
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Bikes out / total</th>
+    </tr>
+  </thead>
+  <tbody>
 <% @locations.sort{|a,b| a.name <=> b.name }.each do |location| %>
-  <li class="row no-bullet">
-    <div class="span2"><%= link_to location.name, location %></div>
-    <div class="span1"><%= link_to "Map", "http://maps.google.com/?q=#{location.latlong}" %></div>
-    <div class="span2">
-      <%= link_to 'Edit', edit_location_path(location) %>
-    </div>
-  </li>
+  <tr>
+    <td>
+      <%= link_to location.name, location %> <%= link_to "(map)", "http://maps.google.com/?q=#{location.latlong}" %>
+    </td>
+    <td><%= location.bikes.checked_out.count %> / <%= location.bikes.count %></td>
+  </tr>
 <% end %>
-</ul>
+  </tbody>
+</table>
 
 <br />
