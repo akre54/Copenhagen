@@ -13,6 +13,7 @@
 //= require jquery/jquery
 //= require jquery-ujs/src/rails
 //= require twitter/bootstrap/bootstrap-dropdown
+//= require handlebars
 //= require typeahead.js/dist/typeahead
 //= require underscore/underscore
 //= require_tree .

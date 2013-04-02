@@ -5,6 +5,7 @@
     "jquery": "~1.9.1",
     "jquery-ujs": "git@github.com:rails/jquery-ujs.git",
     "typeahead.js": "~0.9.1",
+    "typeahead-bootstrap.css": "jharding/typeahead.js-bootstrap.css",
     "underscore": "~1.4.4"
   }
 }
