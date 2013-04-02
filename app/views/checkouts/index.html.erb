@@ -1,23 +1,27 @@
 <h1>Listing checkouts</h1>
 
-<div class="row">
-  <div class="span1">Bike</div>
-  <div class="span2">Checked Out To</div>
-  <div class="span2">Location</div>
-  <div class="span3">Checked out</div>
-  <div class="span2">Due Back</div>
-</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Bike</th>
+      <th>Checked Out To</th>
+      <th>Location</th>
+      <th>Time</th>
+      <th>Due Back</th>
+    </tr>
+  </thead>
+  <tbody>
 
-<ul class="no-offset">
 <% @checkouts.each do |checkout| %>
-  <li class="row no-bullet">
-    <div class="span1"><%= link_to checkout.bike.id, checkout.bike %></div>
-    <div class="span2"><%= link_to checkout.biker.full_name, checkout.biker %></div>
-    <div class="span2"><%= link_to checkout.location.name, checkout.location %></div>
-    <div class="span3"><%= checkout.created_at.strftime("%B %d at %I:%M %p") %></div>
-    <div class="span2"><%= checkout.due_at.strftime("%B %d") %></div>
-  </li>
+  <tr>
+    <td><%= link_to checkout.bike.id, checkout.bike %></td>
+    <td><%= link_to checkout.biker.full_name, checkout.biker %></td>
+    <td><%= link_to checkout.location.name, checkout.location %></td>
+    <td><%= checkout.created_at.strftime("%B %d at %I:%M %p") %></td>
+    <td><%= checkout.due_at.strftime("%B %d") %></td>
+  </tr>
 <% end %>
-</ul>
+  </tbody>
+</table>
 
 <br />
