@@ -33,7 +33,7 @@ class CheckoutsController < ApplicationController
     if params[:bike_id]
       @bike = Bike.find(params[:bike_id])
     else
-      @bikes = current_user.admin? ? Bike.all : Bike.where(location_id: session[:location_id])
+      @bikes = current_user.admin? ? Bike.all : Bike.find_all_by_location_id(session[:location_id])
     end
 
     respond_to do |format|
