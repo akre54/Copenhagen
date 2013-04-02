@@ -9,7 +9,7 @@ class BikersController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @bikers }
+      format.json { render json: @bikers.map{ |b| "#{b.full_name} (#{b.netid})" }}
     end
   end
 
