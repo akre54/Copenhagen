@@ -23,13 +23,15 @@
         <td><%= bike.condition %></td>
         <td><%= bike.checked_out? ? link_to(bike.checked_out_to.full_name, bike.checked_out_to) : 'no' %></td>
         <% if current_user.admin? %>
-          <td><%= link_to "#{bike.location.name}", bike.location %></td>
-          <td>
-            <% if bike.checked_out? %>
-              <%= link_to "check in", checkin_checkout_path(bike.active_checkout), method: :post %>
-            <% else %>
-              <%= link_to "check out", new_bike_checkout_path(bike) %>
-            <% end %>
+        <td><%= link_to "#{bike.location.name}", bike.location %></td>
+        <% end %>
+        <td>
+          <% if bike.checked_out? %>
+            <%= link_to "check in", checkin_checkout_path(bike.active_checkout), method: :post %>
+          <% else %>
+            <%= link_to "check out", new_bike_checkout_path(bike) %>
+          <% end %>
+          <% if current_user.admin? %>
             <div class="btn-group pull-right">
               <a class="btn dropdown-toggle btn-mini" data-toggle="dropdown" href="#">Admin <span class="caret"></span></a>
               <ul class="dropdown-menu">
@@ -37,8 +39,8 @@
                 <li><a href="<%= bike_path(bike) %>" data-method="delete" data-confirm="Are you sure?" rel="nofollow"><i class="icon-trash"></i> Delete</a></li>
               </ul>
             </div>
-          </td>
-        <% end %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
