@@ -12,10 +12,10 @@ class Bike < ActiveRecord::Base
   end
 
   def checkin
-    last_checkout = active_checkout
-    return unless last_checkout
-    last_checkout.returned_at = Time.now
-    last_checkout.save
+    checkout = active_checkout
+    return unless checkout
+    checkout.returned_at = Time.now
+    checkout.save
   end
 
   def active_checkout
@@ -27,8 +27,8 @@ class Bike < ActiveRecord::Base
   end
 
   def due_at
-    last_checkout = active_checkout
-    last_checkout.due_at if last_checkout
+    checkout = active_checkout
+    checkout.due_at if checkout
   end
 
   def checked_out?
@@ -36,8 +36,8 @@ class Bike < ActiveRecord::Base
   end
 
   def checked_out_to
-    last_checkout = active_checkout
-    last_checkout.biker if last_checkout
+    checkout = active_checkout
+    checkout.biker if checkout
   end
 
   def to_s
