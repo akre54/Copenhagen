@@ -49,14 +49,13 @@ class CheckoutsController < ApplicationController
   # POST /Checkouts
   # POST /Checkouts.json
   def create
-    @biker = Biker.find_by_net_id(params[:checkout][:biker_netid])
-    @bike = Bike.find params[:checkout][:bike_id]
-    @bike.checkout_to @biker
+    @biker = Biker.find_by_netid(params[:checkout][:biker_netid])
+    @bike = Bike.find(params[:checkout][:bike_id])
 
     respond_to do |format|
-      if @checkout.save
-        format.html { redirect_to @checkout, notice: 'Checkout was successfully created.' }
-        format.json { render json: @checkout, status: :created, checkout: @checkout }
+      if @bike.checkout_to(@biker)
+        format.html { redirect_to @bike.last_checkout, notice: 'Checkout was successfully created.' }
+        format.json { render json: @bike, status: :created, checkout: @checkout }
       else
         format.html { render action: "new" }
         format.json { render json: @checkout.errors, status: :unprocessable_entity }

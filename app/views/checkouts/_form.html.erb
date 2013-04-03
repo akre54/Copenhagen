@@ -13,7 +13,7 @@
 
   <div class="field">
     <% if @bike %>
-      <%= hidden_field_tag :bike_id, @bike.id %>
+      <%= f.hidden_field :bike_id, value: @bike.id %>
     <% else %>
       <label for="checkout_bike_id">Bike:</label><br />
       <%= collection_select :checkout, :bike_id, @bikes, :id, :to_s, prompt: true %>

@@ -11,7 +11,7 @@ Copenhagen::Application.routes.draw do
       post :checkin
     end
 
-    resources :checkouts, only: [:new, :index]
+    resources :checkouts, only: [:new, :create, :index]
   end
 
 
