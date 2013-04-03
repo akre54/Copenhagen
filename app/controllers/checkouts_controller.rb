@@ -3,8 +3,10 @@ class CheckoutsController < ApplicationController
 
   before_filter :require_admin, except: [:new]
 
-  # GET /Checkouts
-  # GET /Checkouts.json
+  # GET /checkouts
+  # GET /checkouts.json
+  # GET /bikes/1/checkouts
+  # GET /bikes/1/checkouts.json
   def index
     if params[:bike_id]
       @checkouts = Bike.find(params[:bike_id]).checkouts.order('created_at DESC')
@@ -18,8 +20,8 @@ class CheckoutsController < ApplicationController
     end
   end
 
-  # GET /Checkouts/1
-  # GET /Checkouts/1.json
+  # GET /checkouts/1
+  # GET /checkouts/1.json
   def show
     @checkout = Checkout.find(params[:id])
 
@@ -29,8 +31,10 @@ class CheckoutsController < ApplicationController
     end
   end
 
-  # GET /Checkouts/new
-  # GET /Checkouts/new.json
+  # GET /checkouts/new
+  # GET /checkouts/new.json
+  # GET /bikes/1/checkouts/new
+  # GET /bikes/1/checkouts/new.json
   def new
     @checkout = Checkout.new
 
@@ -46,8 +50,10 @@ class CheckoutsController < ApplicationController
     end
   end
 
-  # POST /Checkouts
-  # POST /Checkouts.json
+  # POST /checkouts
+  # POST /checkouts.json
+  # POST /bikes/1/checkouts
+  # POST /bikes/1/checkouts.json
   def create
     @biker = Biker.find_by_netid(params[:checkout][:biker_netid])
     @bike = Bike.find(params[:checkout][:bike_id])
