@@ -5,4 +5,7 @@
 $ ->
   $('#checkout_biker_netid').typeahead
     name: 'bikers'
+    valueKey: 'netid'
     prefetch: '/bikers.json'
+    template: (data)->
+      "<div class='tt-suggestion'><p>#{data.full_name} <strong>(#{data.netid})</strong></p></div>"
