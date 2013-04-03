@@ -1,7 +1,7 @@
 class CheckoutsController < ApplicationController
   before_filter :require_login
 
-  before_filter :require_admin, except: [:new]
+  before_filter :require_admin, except: [:new, :create, :checkin]
 
   # GET /checkouts
   # GET /checkouts.json
@@ -71,8 +71,24 @@ class CheckoutsController < ApplicationController
     end
   end
 
-  # DELETE /Checkouts/1
-  # DELETE /Checkouts/1.json
+  # POST /checkouts/1/checkin
+  # POST /checkouts/1/checkin.json
+  def checkin
+    @checkout = Checkout.find(params[:id])
+
+    respond_to do |format|
+      if @checkout.errors.none?
+        format.html { redirect_to @bike, notice: "Bike has been checked in. Please thank #{@checkout.biker.first_name} for their participation!" }
+        format.json { render json: @bike }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @checkout.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /checkouts/1
+  # DELETE /checkouts/1.json
   def destroy
     @checkout = Checkout.find(params[:id])
 

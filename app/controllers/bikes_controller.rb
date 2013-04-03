@@ -25,42 +25,6 @@ class BikesController < ApplicationController
     end
   end
 
-  # GET /bikes/1/checkout
-  # GET /bikes/1/checkout.json
-  def
-
-
-  # POST /bikes/1/checkout
-  # POST /bikes/1/checkout.json
-  def checkout
-    @bike = Bike.find(params[:id])
-    @biker = Biker.find(params[:biker_id])
-
-    respond_to do |format|
-      if @bike.checkout_to @biker
-        format.html { redirect_to @bike, notice: "Bike has been checked out. Please remind #{@biker.first_name} to bike responsibly!" }
-        format.json { render json: @bike }
-      else
-        # TODO
-      end
-    end
-  end
-
-  # POST /bikes/1/checkin
-  # POST /bikes/1/checkin.json
-  def checkin
-    @bike = Bike.find(params[:id])
-    @bike.checkin
-
-    last_biker_name = @bike.last_checkout.biker.first_name
-
-    respond_to do |format|
-      format.html { redirect_to @bike, notice: "Bike has been checked in. Please thank #{last_biker_name} for their participation!" }
-      format.json { render json: @bike }
-    end
-
-  end
-
   # GET /bikes/new
   # GET /bikes/new.json
   def new

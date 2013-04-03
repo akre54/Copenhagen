@@ -1,17 +1,18 @@
 Copenhagen::Application.routes.draw do
   devise_for :users, path_names: { sign_in: 'login', sign_out: 'logout' }
 
-  resources :bikers, :users, :checkouts
+  resources :bikers, :users
 
   resources :locations, only: [:show, :index]
 
   resources :bikes do
-    member do
-      post :checkout
-      post :checkin
-    end
-
     resources :checkouts, only: [:new, :create, :index]
+  end
+
+  resources :checkouts do
+    member do
+      post :checkin, as: :checkin_bike
+    end
   end
 
 
