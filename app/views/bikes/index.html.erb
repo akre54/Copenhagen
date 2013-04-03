@@ -25,8 +25,12 @@
         <% if current_user.admin? %>
           <td><%= link_to "#{bike.location.name}", bike.location %></td>
           <td>
-            <%= link_to "checkout", new_bike_checkout_path(bike) %>
-            <div class="btn-group">
+            <% if bike.checked_out? %>
+              <%= link_to "check in", checkin_bike_path(bike), method: :post %>
+            <% else %>
+              <%= link_to "check out", new_bike_checkout_path(bike) %>
+            <% end %>
+            <div class="btn-group pull-right">
               <a class="btn dropdown-toggle btn-mini" data-toggle="dropdown" href="#">Admin <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="<%= edit_bike_path(bike) %>"><i class="icon-pencil"></i> Edit</a></li>

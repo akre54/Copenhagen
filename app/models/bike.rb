@@ -8,14 +8,18 @@ class Bike < ActiveRecord::Base
   validates_inclusion_of :condition, in: %w( fucked operational offline )
 
   def checkout_to(biker)
-    self.checkouts << Checkout.new(biker: biker, location: self.location)
+    checkout = Checkout.new(biker: biker, location: self.location)
+    checkouts << checkout if checkout
+    checkout
   end
 
   def checkin
     checkout = active_checkout
-    return unless checkout
-    checkout.returned_at = Time.now
-    checkout.save
+    if checkout
+      checkout.checkin
+    else
+      errors.add :base, "bike #{id} wasn't checked out to begin with."
+    end
   end
 
   def active_checkout
