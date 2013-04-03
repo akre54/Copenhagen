@@ -8,4 +8,4 @@ $ ->
     valueKey: 'netid'
     prefetch: '/bikers.json'
     template: (data)->
-      "<div class='tt-suggestion'><p>#{data.full_name} <strong>(#{data.netid})</strong></p></div>"
+      "<div class='tt-suggestion'><p>#{data.tokens[0]} <strong>(#{data.netid})</strong></p></div>"
