@@ -26,7 +26,7 @@
           <td><%= link_to "#{bike.location.name}", bike.location %></td>
           <td>
             <% if bike.checked_out? %>
-              <%= link_to "check in", checkin_bike_path(bike), method: :post %>
+              <%= link_to "check in", checkin_checkout_path(bike.active_checkout), method: :post %>
             <% else %>
               <%= link_to "check out", new_bike_checkout_path(bike) %>
             <% end %>

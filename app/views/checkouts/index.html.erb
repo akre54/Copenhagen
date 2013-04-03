@@ -12,15 +12,15 @@
   </thead>
   <tbody>
 
-<% @checkouts.each do |checkout| %>
-  <tr>
-    <td><%= link_to checkout.bike.id, checkout.bike %></td>
-    <td><%= link_to checkout.biker.full_name, checkout.biker %></td>
-    <td><%= link_to checkout.location.name, checkout.location %></td>
-    <td><%= checkout.created_at.strftime("%B %d at %I:%M %p") %></td>
-    <td><%= checkout.due_at.strftime("%B %d") %></td>
-  </tr>
-<% end %>
+    <% @checkouts.each do |checkout| %>
+      <tr>
+        <td><%= link_to checkout.bike.id, checkout.bike %></td>
+        <td><%= link_to checkout.biker.full_name, checkout.biker %></td>
+        <td><%= link_to checkout.location.name, checkout.location %></td>
+        <td><%= checkout.created_at.strftime("%B %d at %I:%M %p") %></td>
+        <td><%= checkout.due_at.strftime("%B %d") %></td>
+      </tr>
+    <% end %>
   </tbody>
 </table>
 

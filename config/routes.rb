@@ -11,7 +11,7 @@ Copenhagen::Application.routes.draw do
 
   resources :checkouts do
     member do
-      post :checkin, as: :checkin_bike
+      post :checkin
     end
   end
 

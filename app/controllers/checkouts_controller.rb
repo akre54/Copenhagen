@@ -78,8 +78,8 @@ class CheckoutsController < ApplicationController
 
     respond_to do |format|
       if @checkout.errors.none?
-        format.html { redirect_to @bike, notice: "Bike has been checked in. Please thank #{@checkout.biker.first_name} for their participation!" }
-        format.json { render json: @bike }
+        format.html { redirect_to @checkout.bike, notice: "Bike has been checked in. Please thank #{@checkout.biker.first_name} for their participation!" }
+        format.json { render json: @checkout.bike }
       else
         format.html { render action: "new" }
         format.json { render json: @checkout.errors, status: :unprocessable_entity }
