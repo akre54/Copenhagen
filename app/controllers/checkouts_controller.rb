@@ -7,11 +7,15 @@ class CheckoutsController < ApplicationController
   # GET /checkouts.json
   # GET /bikes/1/checkouts
   # GET /bikes/1/checkouts.json
+  # GET /bikers/1/checkouts
+  # GET /bikers/1/checkouts.json
   def index
+    @checkouts = Checkout.order('created_at DESC')
+
     if params[:bike_id]
-      @checkouts = Bike.find(params[:bike_id]).checkouts.order('created_at DESC')
-    else
-      @checkouts = Checkout.order('created_at DESC')
+      @checkouts = @checkouts.where(bike_id: params[:bike_id])
+    elsif params[:biker_id]
+      @checkouts = @checkouts.where(bike_id: params[:biker_id])
     end
 
     respond_to do |format|

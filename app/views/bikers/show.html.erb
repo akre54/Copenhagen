@@ -16,6 +16,11 @@
 </p>
 
 <p>
+  <b>Number of checkouts:</b>
+  <%= link_to @biker.checkouts.count, biker_checkouts_path(@biker) %>
+</p>
+
+<p>
   <b>Email:</b>
   <%= @biker.email %>
 </p>
