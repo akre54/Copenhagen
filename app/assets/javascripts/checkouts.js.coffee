@@ -6,6 +6,11 @@ $ ->
   $('#checkout_biker_netid').typeahead
     name: 'bikers'
     valueKey: 'netid'
-    prefetch: '/bikers.json'
+    prefetch:
+      url: '/bikers.json'
+      filter: (resp) ->
+        for biker in resp
+          biker.tokens = biker.full_name.split(' ').concat(biker.netid)
+        resp
     template: (data)->
-      "<div class='tt-suggestion'><p>#{data.tokens[0]} <strong>(#{data.netid})</strong></p></div>"
+      "<div class='tt-suggestion'><p>#{data.full_name} <strong>(#{data.netid})</strong></p></div>"
