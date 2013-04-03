@@ -17,8 +17,8 @@
         <td><%= link_to checkout.bike.id, checkout.bike %></td>
         <td><%= link_to checkout.biker.full_name, checkout.biker %></td>
         <td><%= link_to checkout.location.name, checkout.location %></td>
-        <td><%= checkout.created_at.strftime("%B %d at %I:%M %p") %></td>
-        <td><%= checkout.due_at.strftime("%B %d") %></td>
+        <td><%= l checkout.created_at, format: :medium %></td>
+        <td><%= l checkout.due_at, format: :short %></td>
       </tr>
     <% end %>
   </tbody>

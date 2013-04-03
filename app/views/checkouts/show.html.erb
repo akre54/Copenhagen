@@ -5,6 +5,6 @@
   <p>
      Bike #<%= link_to @checkout.bike.id, @checkout.bike %>
      was checked out to <%= link_to @checkout.biker.full_name, @checkout.biker %>
-     on <%= l @checkout.created_at %>
+     on <%= l @checkout.created_at, format: :medium %>
    </p>
 </div>
