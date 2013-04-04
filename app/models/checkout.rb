@@ -17,7 +17,7 @@ class Checkout < ActiveRecord::Base
 
 
   def checkin
-    returned_at = Time.now
+    self.returned_at = Time.now
     save
   end
 

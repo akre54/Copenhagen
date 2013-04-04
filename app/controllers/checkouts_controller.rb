@@ -81,7 +81,7 @@ class CheckoutsController < ApplicationController
     @checkout = Checkout.find(params[:id])
 
     respond_to do |format|
-      if @checkout.errors.none?
+      if @checkout.checkin
         format.html { redirect_to @checkout.bike, notice: "Bike has been checked in. Please thank #{@checkout.biker.first_name} for their participation!" }
         format.json { render json: @checkout.bike }
       else
