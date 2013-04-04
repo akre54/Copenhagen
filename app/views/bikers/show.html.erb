@@ -17,7 +17,10 @@
 
 <p>
   <b>Number of checkouts:</b>
-  <%= link_to @biker.checkouts.count, biker_checkouts_path(@biker) %>
+  <%= @biker.checkouts.count %>
+  <% unless @biker.checkouts.count == 0 %>
+    (<%= link_to 'show', biker_checkouts_path(@biker)%>)
+  <% end %>
 </p>
 
 <p>
