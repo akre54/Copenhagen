@@ -59,7 +59,7 @@ class CheckoutsController < ApplicationController
   # POST /bikes/1/checkouts
   # POST /bikes/1/checkouts.json
   def create
-    @biker = Biker.find_by_netid(params[:checkout][:biker_netid])
+    @biker = Biker.find_by_netid(params[:checkout][:biker][:netid])
     @bike = Bike.find(params[:checkout][:bike_id])
 
     @checkout = @bike.checkout_to(@biker)

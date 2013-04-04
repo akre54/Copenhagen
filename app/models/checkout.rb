@@ -1,5 +1,6 @@
 class Checkout < ActiveRecord::Base
   attr_accessible :due_at, :returned_at, :biker, :bike, :location
+  attr_accessor :helmet_requested
   belongs_to :biker
   belongs_to :bike
   belongs_to :location

@@ -15,19 +15,21 @@
     <% if @bike %>
       <%= f.hidden_field :bike_id, value: @bike.id %>
     <% else %>
-      <label for="checkout_bike_id">Bike:</label><br />
+      <%= f.label :bike_id, "Bike: " %><br />
       <%= collection_select :checkout, :bike_id, @bikes, :id, :to_s, prompt: true %>
     <% end %>
   </div>
 
   <div class="field">
-    <label for="checkout_biker_netid">Biker:</label><br />
-    <input id="checkout_biker_netid" name="checkout[biker_netid]" size="30" type="text" />
+    <%= f.fields_for :biker do |b| %>
+      <%= b.label :netid, "Biker:" %>
+      <%= b.text_field :netid %>
+    <% end %>
   </div>
 
   <div class="field">
-    <label for="checkout_helmet_requested">Does the rider need a helmet?</label><br />
-    <input id="checkout_helmet_requested" name="checkout[helmet_requested]" type="checkbox" />
+    <%= f.check_box :helmet_requested %>
+    <%= f.label :helmet_requested, "Does the rider need a helmet?" %>
   </div>
 
   <div class="actions">
