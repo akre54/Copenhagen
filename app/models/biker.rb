@@ -12,6 +12,14 @@ class Biker < ActiveRecord::Base
 
   validates_inclusion_of :affiliation, in: AFFILIATIONS
 
+  def has_bike_out?
+    checkouts.checked_out != []
+  end
+
+  def can_check_out?
+    active && !has_bike_out?
+  end
+
   def full_name
     "#{first_name} #{last_name}"
   end
