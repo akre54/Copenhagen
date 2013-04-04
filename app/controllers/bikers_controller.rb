@@ -13,10 +13,12 @@ class BikersController < ApplicationController
     end
   end
 
+  # GET /bikers/1
+  # GET /bikers/1.json
   # GET /bikers/amk528
   # GET /bikers/amk528.json
   def show
-    @biker = Biker.find_by_netid(params[:id])
+    @biker = Biker.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
