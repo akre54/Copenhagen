@@ -3,9 +3,9 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>Bike</th>
-      <th>Checked Out To</th>
-      <th>Location</th>
+      <% unless @bike %><th>Bike</th><% end %>
+      <% unless @biker %><th>Checked Out To</th><% end %>
+      <% unless @location %><th>Location</th><% end %>
       <th>Time</th>
       <th>Due Back</th>
     </tr>
@@ -14,9 +14,9 @@
 
     <% @checkouts.each do |checkout| %>
       <tr>
-        <td><%= link_to checkout.bike.id, checkout.bike %></td>
-        <td><%= link_to checkout.biker.full_name, checkout.biker %></td>
-        <td><%= link_to checkout.location.name, checkout.location %></td>
+        <% unless @bike %><td><%= link_to checkout.bike.id, checkout.bike %></td><% end %>
+        <% unless @biker %> <td><%= link_to checkout.biker.full_name, checkout.biker %></td><% end %>
+        <% unless @location %><td><%= link_to checkout.location.name, checkout.location %></td><% end %>
         <td><%= l checkout.created_at, format: :medium %></td>
         <td><%= l checkout.due_at, format: :short %></td>
       </tr>

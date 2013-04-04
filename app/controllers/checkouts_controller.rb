@@ -19,11 +19,14 @@ class CheckoutsController < ApplicationController
     end
 
     if params[:bike_id]
-      @checkouts = @checkouts.where(bike_id: params[:bike_id])
+      @bike = Bike.find(params[:bike_id])
+      @checkouts = @checkouts.where(bike_id: @bike.id)
     elsif params[:biker_id]
-      @checkouts = @checkouts.where(biker_id: params[:biker_id])
+      @biker = Biker.find(params[:biker_id])
+      @checkouts = @checkouts.where(biker_id: @biker.id)
     elsif params[:location_id]
-      @checkouts = @checkouts.where(location_id: params[:location_id])
+      @location = Location.find(params[:location_id])
+      @checkouts = @checkouts.where(location_id: @location.id)
     end
 
     respond_to do |format|
