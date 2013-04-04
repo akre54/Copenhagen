@@ -24,11 +24,11 @@ class Bike < ActiveRecord::Base
   end
 
   def active_checkout
-    checkouts.checked_out.limit(1).first
+    checkouts.checked_out.first
   end
 
   def last_checkout
-    checkouts.order('created_at DESC').limit(1).first
+    checkouts.order('created_at DESC').first
   end
 
   def due_at
