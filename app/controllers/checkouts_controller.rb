@@ -14,6 +14,10 @@ class CheckoutsController < ApplicationController
   def index
     @checkouts = Checkout.order('created_at DESC')
 
+    unless current_user.admin? || (params[:location_id] && session[:location_id] == params[:location_id])
+      redirect_to root, { status: :unauthorized }
+    end
+
     if params[:bike_id]
       @checkouts = @checkouts.where(bike_id: params[:bike_id])
     elsif params[:biker_id]
