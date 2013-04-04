@@ -8,6 +8,10 @@ class BikesController < ApplicationController
   def index
     @bikes = Bike.order(:id)
 
+    unless current_user.admin?
+      @bikes = @bikes.where(location_id: session[:location_id])
+    end
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @bikes }
