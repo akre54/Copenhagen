@@ -17,7 +17,7 @@ class CheckoutsController < ApplicationController
     if params[:bike_id]
       @checkouts = @checkouts.where(bike_id: params[:bike_id])
     elsif params[:biker_id]
-      @checkouts = @checkouts.where(bike_id: params[:biker_id])
+      @checkouts = @checkouts.where(biker_id: params[:biker_id])
     elsif params[:location_id]
       @checkouts = @checkouts.where(location_id: params[:location_id])
     end
