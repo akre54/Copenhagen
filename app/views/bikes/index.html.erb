@@ -17,7 +17,14 @@
   </thead>
   <tbody>
     <% @bikes.each do |bike| %>
-      <tr>
+      <%
+        if bike.checked_out?
+          row_class = "info"
+        elsif bike.overdue?
+          row_class = "warning"
+        end
+      %>
+      <tr class="<%= row_class %>">
         <td><%= link_to bike, bike_path(bike) %></td>
         <td><%= bike.color %></td>
         <td><%= bike.condition %></td>
@@ -45,5 +52,3 @@
     <% end %>
   </tbody>
 </table>
-
-<%= link_to 'New', new_bike_path, :class => 'btn btn-primary' %>
