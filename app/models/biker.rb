@@ -1,8 +1,10 @@
 class Biker < ActiveRecord::Base
   attr_readonly :email, :netid
 
-  attr_accessible :remember_me, :first_name, :last_name, :affilition,
+  attr_accessible :remember_me, :first_name, :last_name, :affilition, :active
                   :year_of_graduation
+
+  scope :active, where(active: true)
 
   has_many :checkouts
 

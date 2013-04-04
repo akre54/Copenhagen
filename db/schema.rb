@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130404194803) do
+ActiveRecord::Schema.define(:version => 20130404214529) do
 
   create_table "bikers", :force => true do |t|
     t.string   "first_name"
@@ -20,8 +20,9 @@ ActiveRecord::Schema.define(:version => 20130404194803) do
     t.string   "email"
     t.string   "affiliation"
     t.integer  "year_of_graduation"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
+    t.boolean  "active",             :default => true, :null => false
   end
 
   add_index "bikers", ["netid"], :name => "index_bikers_on_netid"
