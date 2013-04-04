@@ -3,7 +3,9 @@ Copenhagen::Application.routes.draw do
 
   resources :users
 
-  resources :locations, only: [:show, :index]
+  resources :locations, only: [:show, :index] do
+    resources :checkouts, only: [:index]
+  end
 
   resources :bikes do
     resources :checkouts, only: [:new, :create, :index]

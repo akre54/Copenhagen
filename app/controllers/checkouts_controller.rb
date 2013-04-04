@@ -7,8 +7,10 @@ class CheckoutsController < ApplicationController
   # GET /checkouts.json
   # GET /bikes/1/checkouts
   # GET /bikes/1/checkouts.json
-  # GET /bikers/1/checkouts
-  # GET /bikers/1/checkouts.json
+  # GET /bikers/amk528/checkouts
+  # GET /bikers/amk528/checkouts.json
+  # GET /locations/1/checkouts
+  # GET /locations/1/checkouts.json
   def index
     @checkouts = Checkout.order('created_at DESC')
 
@@ -16,6 +18,8 @@ class CheckoutsController < ApplicationController
       @checkouts = @checkouts.where(bike_id: params[:bike_id])
     elsif params[:biker_id]
       @checkouts = @checkouts.where(bike_id: params[:biker_id])
+    elsif params[:location_id]
+      @checkouts = @checkouts.where(location_id: params[:location_id])
     end
 
     respond_to do |format|

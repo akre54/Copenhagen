@@ -13,7 +13,7 @@
     <td>
       <%= link_to location.name, location %> <%= link_to "(map)", "http://maps.google.com/?q=#{location.latlong}" %>
     </td>
-    <td><%= location.bikes.checked_out.count %> / <%= location.bikes.count %></td>
+    <td><%= link_to "#{location.bikes.checked_out.count} / #{location.bikes.count}", location_checkouts_path(location) %></td>
   </tr>
 <% end %>
   </tbody>
