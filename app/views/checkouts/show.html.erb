@@ -3,8 +3,12 @@
 <div>
   <h4>Information</h4>
   <p>
-     Bike #<%= link_to @checkout.bike.id, @checkout.bike %>
+     Bike <%= link_to "##{@checkout.bike.id}", @checkout.bike %>
      was checked out to <%= link_to @checkout.biker.full_name, @checkout.biker %>
      on <%= l @checkout.created_at, format: :medium %>
    </p>
+</div>
+
+<div class="form-actions">
+  <%= link_to 'Back', bikes_path, :class => 'btn'  %>
 </div>
