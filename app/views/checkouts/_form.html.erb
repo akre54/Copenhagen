@@ -28,8 +28,10 @@
   </div>
 
   <div class="field">
-    <%= f.check_box :helmet_requested %>
-    <%= f.label :helmet_requested, "Does the rider need a helmet?" %>
+    <%= f.label :helmet_requested do %>
+      <%= f.check_box :helmet_requested, class: 'checkbox inline', checked: true %>
+      Does the rider need a helmet?
+    <% end %>
   </div>
 
   <div class="actions">
