@@ -6,6 +6,7 @@
       <% unless @bike %><th>Bike</th><% end %>
       <% unless @biker %><th>Checked Out To</th><% end %>
       <% unless @location %><th>Location</th><% end %>
+      <% unless @staffer %><th>Checked Out By</th><% end %>
       <th>Time</th>
       <th>Due Back</th>
     </tr>
@@ -24,6 +25,7 @@
         <% unless @bike %><td><%= link_to checkout.bike.id, checkout.bike %></td><% end %>
         <% unless @biker %> <td><%= link_to checkout.biker.full_name, checkout.biker %></td><% end %>
         <% unless @location %><td><%= link_to checkout.location.name, checkout.location %></td><% end %>
+        <% unless @staffer %><td><%= link_to checkout.staffer.full_name, checkout.staffer %></td><% end %>
         <td><%= l checkout.created_at, format: :medium %></td>
         <td><%= l checkout.due_at, format: :short %></td>
       </tr>

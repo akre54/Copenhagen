@@ -27,6 +27,9 @@ class CheckoutsController < ApplicationController
     elsif params[:location_id]
       @location = Location.find(params[:location_id])
       @checkouts = @checkouts.where(location_id: @location.id)
+    elsif params[:user_id]
+      @staffer = User.find(params[:user_id])
+      @checkouts = @checkouts.where(staffer_id: @staffer.id)
     end
 
     respond_to do |format|
