@@ -1,29 +1,29 @@
-<h1>Listing users</h1>
+<h1>Listing staff</h1>
 
-<table>
-  <tr>
-    <th>Netid</th>
-    <th>First name</th>
-    <th>Last name</th>
-    <th>Year of graduation</th>
-    <th>Email address</th>
-    <th>Affilition</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
+<table class="table table-striped"  >
+  <thead>
+    <tr>
+      <th>Netid</th>
+      <th>Email</th>
+      <th>Location</th>
+      <th></th>
+    </tr>
+  </thead>
 <% @users.each do |user| %>
   <tr>
-    <td><%= user.netid %></td>
-    <td><%= user.first_name %></td>
-    <td><%= user.last_name %></td>
-    <td><%= user.year_of_graduation %></td>
+    <td><%= link_to user.netid, biker_path(user) %></td>
     <td><%= user.email %></td>
-    <td><%= user.affilition %></td>
-    <td><%= link_to 'Show', user %></td>
-    <td><%= link_to 'Edit', edit_user_path(user) %></td>
-    <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= user.location %></td>
+    <td>
+      <div class="btn-group pull-right">
+        <div class="btn dropdown-toggle btn-mini" data-toggle="dropdown">Admin <span class="caret"></span></div>
+        <ul class="dropdown-menu">
+          <li><%= link_to('<i class="icon-user"></i> View'.html_safe, user) %></li>
+          <li><%= link_to('<i class="icon-pencil"></i> Edit'.html_safe, edit_user_path(user)) %></li>
+          <li><%= link_to('<i class="icon-trash"></i> Remove'.html_safe, user, method: :delete, data: { confirm: 'Are you sure?' }) %></li>
+        </ul>
+      </div>
+    </td>
   </tr>
 <% end %>
 </table>
