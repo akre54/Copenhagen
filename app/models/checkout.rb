@@ -18,6 +18,14 @@ class Checkout < ActiveRecord::Base
   end
 
 
+  def checked_out?
+    returned_at == nil
+  end
+
+  def overdue?
+    checked_out? && due_at < Time.now
+  end
+
   def checkin
     self.returned_at = Time.now
     save

@@ -13,7 +13,14 @@
   <tbody>
 
     <% @checkouts.each do |checkout| %>
-      <tr>
+      <%
+        if checkout.checked_out?
+          row_class = 'info'
+        elsif checkout.overdue?
+          row_class = 'error'
+        end
+      %>
+      <tr class="<%= row_class %>">
         <% unless @bike %><td><%= link_to checkout.bike.id, checkout.bike %></td><% end %>
         <% unless @biker %> <td><%= link_to checkout.biker.full_name, checkout.biker %></td><% end %>
         <% unless @location %><td><%= link_to checkout.location.name, checkout.location %></td><% end %>
