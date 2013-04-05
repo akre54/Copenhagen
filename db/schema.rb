@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(:version => 20130404214529) do
     t.boolean  "active",             :default => true, :null => false
   end
 
-  add_index "bikers", ["netid"], :name => "index_bikers_on_netid"
+  add_index "bikers", ["netid"], :name => "index_bikers_on_netid", :unique => true
 
   create_table "bikes", :force => true do |t|
     t.string   "color"
