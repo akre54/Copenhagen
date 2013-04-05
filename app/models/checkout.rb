@@ -1,9 +1,11 @@
 class Checkout < ActiveRecord::Base
-  attr_accessible :due_at, :returned_at, :biker, :bike, :location
+  attr_accessible :due_at, :returned_at, :biker, :bike, :location, :staffer
   attr_accessor :helmet_requested
+
   belongs_to :biker
   belongs_to :bike
   belongs_to :location
+  belongs_to :staffer, class_name: :User
 
   scope :latest, lambda{|n| order(:created_at).limit(n)}
   scope :checked_out, where(returned_at: nil)

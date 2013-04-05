@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130405085053) do
+ActiveRecord::Schema.define(:version => 20130405174237) do
 
   create_table "bikers", :force => true do |t|
     t.string   "first_name"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(:version => 20130405085053) do
     t.string   "authentication_token"
     t.integer  "location_id"
     t.boolean  "admin",                :default => false, :null => false
+    t.string   "type"
   end
 
   add_index "bikers", ["authentication_token"], :name => "index_bikers_on_authentication_token", :unique => true
@@ -58,7 +59,7 @@ ActiveRecord::Schema.define(:version => 20130405085053) do
     t.integer  "location_id", :null => false
     t.datetime "due_at"
     t.datetime "returned_at"
-    t.integer  "user_id"
+    t.integer  "staffer_id"
   end
 
   add_index "checkouts", ["bike_id"], :name => "index_checkouts_on_bike_id"
