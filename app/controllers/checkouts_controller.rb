@@ -85,7 +85,7 @@ class CheckoutsController < ApplicationController
 
     respond_to do |format|
       if @checkout.save
-        format.html { redirect_to @checkout, notice: "Bike was checked out to #{@biker.name}. Please remind them to bike safely!" }
+        format.html { redirect_to @checkout, notice: "Bike was checked out to #{@biker.first_name}. Please remind them to bike safely!" }
         format.json { render json: @bike, status: :created, checkout: @checkout }
       else
         format.html { render action: "new" }

@@ -28,6 +28,10 @@ class Biker < ActiveRecord::Base
     netid
   end
 
+  def to_s
+    full_name
+  end
+
   # override find so we can search by netid
   def self.find(input)
     input.to_i == 0 ? find_by_netid(input) : super
