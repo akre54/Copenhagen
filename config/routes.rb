@@ -13,7 +13,7 @@ Copenhagen::Application.routes.draw do
     resources :checkouts, only: [:index]
   end
 
-  resources :checkouts do
+  resources :checkouts, except: [:edit] do
     member do
       post :checkin
     end
