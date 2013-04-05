@@ -16,6 +16,10 @@ class Checkout < ActiveRecord::Base
     self.due_at = Date.today + 2.days
   end
 
+  after_create do
+    self.location.decrement(:num_helmets) if self.helmet_requested?
+  end
+
 
   def checked_out?
     returned_at == nil
@@ -26,6 +30,7 @@ class Checkout < ActiveRecord::Base
   end
 
   def checkin
+    self.location.increment(:num_helmets) if self.helmet_requested?
     self.returned_at = Time.now
     save
   end
