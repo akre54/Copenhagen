@@ -44,6 +44,8 @@ class Checkout < ActiveRecord::Base
       errors.add :base, "#{biker} already has a bike checked out. Can't check out more than one."
     elsif !biker.active?
       errors.add :base, "#{biker} is not allowed to check out bikes."
+    else
+      true
     end
   end
 end
