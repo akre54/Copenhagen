@@ -76,11 +76,16 @@ class CheckoutsController < ApplicationController
     @biker = Biker.find_by_netid(params[:checkout][:biker][:netid])
     @bike = Bike.find(params[:checkout][:bike_id])
 
-    @checkout = @bike.checkout_to(@biker)
+    @checkout = Checkout.new(
+      bike: @bike,
+      biker: @biker,
+      location: @bike.location,
+      staffer: current_user
+    )
 
     respond_to do |format|
-      if @checkout.errors.none?
-        format.html { redirect_to @checkout, notice: 'Checkout was successfully created.' }
+      if @checkout.save
+        format.html { redirect_to @checkout, notice: "Bike was checked out to #{@biker.name}. Please remind them to bike safely!" }
         format.json { render json: @bike, status: :created, checkout: @checkout }
       else
         format.html { render action: "new" }

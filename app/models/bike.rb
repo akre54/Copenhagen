@@ -10,12 +10,6 @@ class Bike < ActiveRecord::Base
 
   delegate :overdue?, to: :active_checkout, allow_nil: true
 
-  def checkout_to(biker)
-    checkout = Checkout.new(biker: biker, location: self.location)
-    checkouts << checkout if checkout
-    checkout
-  end
-
   def checkin
     checkout = active_checkout
     if checkout
