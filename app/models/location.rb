@@ -3,4 +3,8 @@ class Location < ActiveRecord::Base
 
   has_many :bikes
   has_many :checkouts
+
+  def to_s
+    name
+  end
 end
