@@ -12,11 +12,13 @@ class CheckoutsController < ApplicationController
   # GET /locations/1/checkouts
   # GET /locations/1/checkouts.json
   def index
-    @checkouts = Checkout.order('created_at DESC')
-
     unless current_user.admin? || (params[:location_id] && session[:location_id] == params[:location_id])
       redirect_to root, { status: :unauthorized }
     end
+
+    @checkouts = Checkout.order(params[:order] || 'created_at DESC')
+    @checkouts = @checkouts.limit(params[:limit] || 20)
+    @checkouts = @checkouts.offset(params[:offset] || 0)
 
     if params[:bike_id]
       @bike = Bike.find(params[:bike_id])
