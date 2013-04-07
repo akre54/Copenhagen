@@ -1,6 +1,6 @@
 <h1>Listing checkouts</h1>
 
-<table class="table table-striped">
+<table class="checkouts table table-striped">
   <thead>
     <tr>
       <% unless @bike %><th>Bike</th><% end %>
@@ -16,14 +16,14 @@
     <% @checkouts.each do |checkout| %>
       <%
         if checkout.checked_out?
-          row_class = 'info'
+          row_class = 'checked-out info'
         elsif checkout.overdue?
-          row_class = 'error'
+          row_class = 'overdue error'
         end
       %>
       <tr class="<%= row_class %>">
         <% unless @bike %><td><%= link_to checkout.bike.id, checkout.bike %></td><% end %>
-        <% unless @biker %> <td><%= link_to checkout.biker.full_name, checkout.biker %></td><% end %>
+        <% unless @biker %> <td><%= link_to checkout.biker.full_name, biker_path(checkout.biker) %></td><% end %>
         <% unless @location %><td><%= link_to checkout.location.name, checkout.location %></td><% end %>
         <% unless @staffer %><td><%= link_to checkout.staffer.full_name, checkout.staffer %></td><% end %>
         <td><%= l checkout.created_at, format: :medium %></td>
