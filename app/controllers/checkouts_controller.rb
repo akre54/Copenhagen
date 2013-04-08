@@ -18,8 +18,8 @@ class CheckoutsController < ApplicationController
     end
 
     @checkouts = Checkout
-      .order(sort_column + ' ' + sort_direction)
-      .limit(params[:limit] ? params[:limit].to_i : 20)
+      .order("#{sort_column} #{sort_direction}")
+      .limit(params[:limit] || 20)
       .offset(params[:offset].to_i)
 
     if params[:bike_id]
