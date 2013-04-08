@@ -1,7 +1,8 @@
 class CheckoutsController < ApplicationController
   before_filter :require_login
-
   before_filter :require_admin, except: [:new, :create, :checkin]
+
+  helper_method :sort_column, :sort_direction
 
   # GET /checkouts
   # GET /checkouts.json
@@ -16,10 +17,8 @@ class CheckoutsController < ApplicationController
       redirect_to root, { status: :unauthorized }
     end
 
-    order_regex = /\A(bike_id|biker_id|created_at|returned_at|due_at|location_id|staffer_id)(\s(desc|asc))?\z/i
-
     @checkouts = Checkout
-      .order(order_regex.match(params[:order]) ? params[:order] : 'created_at DESC')
+      .order(sort_column + ' ' + sort_direction)
       .limit(params[:limit] ? params[:limit].to_i : 20)
       .offset(params[:offset].to_i)
 
@@ -126,5 +125,15 @@ class CheckoutsController < ApplicationController
       format.html { redirect_to Checkouts_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+
+  def sort_column
+    Checkout.column_names.include?(params[:sort]) ? params[:sort] : 'created_at'
+  end
+
+  def sort_direction
+    %w(asc desc).include?(params[:direction]) ? params[:direction] : "desc"
   end
 end

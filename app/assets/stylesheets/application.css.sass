@@ -18,3 +18,15 @@
 
 body
   padding-top: 60px
+
+.table th
+  .current
+    padding-right: 12px
+    background-repeat: no-repeat
+    background-position: right center
+
+    &.asc::after
+      content: '▲'
+
+    &.desc::after
+      content: '▼'
