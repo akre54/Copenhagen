@@ -3,13 +3,13 @@
 <table class="checkouts table table-striped">
   <thead>
     <tr>
-      <% unless @bike %><th>Bike</th><% end %>
-      <% unless @biker %><th>Checked Out To</th><% end %>
-      <% unless @location %><th>Location</th><% end %>
-      <% unless @staffer %><th>Checked Out By</th><% end %>
-      <th>Time</th>
-      <th>Due Back</th>
-      <th>Returned</th>
+      <% unless @bike %><th><%= link_to 'Bike', params.merge({order: :bike_id}) %></th><% end %>
+      <% unless @biker %><th><%= link_to 'Checked Out To', params.merge({order: :biker_id}) %></th><% end %>
+      <% unless @location %><th><%= link_to 'Location', params.merge({order: :location_id}) %></th><% end %>
+      <% unless @staffer %><th><%= link_to 'Checked Out By', params.merge({order: :staffer_id}) %></th><% end %>
+      <th><%= link_to 'Time', params.merge({order: :created_at}) %></th>
+      <th><%= link_to 'Due Back', params.merge({order: :due_at}) %></th>
+      <th><%= link_to 'Returned', params.merge({order: :returned_at}) %></th>
     </tr>
   </thead>
   <tbody>
