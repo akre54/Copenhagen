@@ -3,9 +3,18 @@
 <div>
   <h4>Information</h4>
   <p>
-     Bike <%= link_to "##{@checkout.bike.id}", @checkout.bike %>
-     was checked out to <%= link_to @checkout.biker.full_name, @checkout.biker %>
-     on <%= l @checkout.created_at, format: :medium %>
+    Bike <%= link_to "##{@checkout.bike.id}", @checkout.bike %>
+    was checked out to <%= link_to @checkout.biker, @checkout.biker %>
+    on <%= l @checkout.created_at, format: :medium %> by
+    <%= link_to @checkout.staffer, @checkout.staffer %> from
+    <%= link_to @checkout.location, @checkout.location %>.
+    <% if @checkout.checked_out? %>
+      Due back on <%= l @checkout.due_at, format: :short %>.
+    <% elsif @checkout.overdue? %>
+      <span class="text-error">Overdue</span>. Was due back <%= l @checkout.due_at, format: :short %>
+    <% else %>
+      Checked in on <%= l @checkout.returned_at, format: :medium %>.
+    <% end %>
    </p>
 </div>
 
