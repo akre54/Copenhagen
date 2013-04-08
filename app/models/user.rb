@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :rememberable, :trackable, :validatable,
          :token_authenticatable, :timeoutable
 
-  has_many :checkouts
+  has_many :checkouts, foreign_key: :staffer_id
   belongs_to :location
   belongs_to :biker, foreign_key: :netid, primary_key: :netid
 
