@@ -23,9 +23,9 @@
       %>
       <tr class="<%= row_class %>">
         <% unless @bike %><td><%= link_to checkout.bike.id, checkout.bike %></td><% end %>
-        <% unless @biker %> <td><%= link_to checkout.biker.full_name, biker_path(checkout.biker) %></td><% end %>
+        <% unless @biker %> <td><%= link_to checkout.biker, checkout.biker %></td><% end %>
         <% unless @location %><td><%= link_to checkout.location.name, checkout.location %></td><% end %>
-        <% unless @staffer %><td><%= link_to checkout.staffer.full_name, checkout.staffer %></td><% end %>
+        <% unless @staffer %><td><%= link_to checkout.staffer, checkout.staffer %></td><% end %>
         <td><%= l checkout.created_at, format: :medium %></td>
         <td><%= l checkout.due_at, format: :short %></td>
       </tr>

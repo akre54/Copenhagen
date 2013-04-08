@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   belongs_to :location
   belongs_to :biker, foreign_key: :netid, primary_key: :netid
 
-  delegate :first_name, :last_name, :year_of_graduation, :affiliation, :full_name, :to_param, :to_s, to: :biker
+  delegate :first_name, :last_name, :year_of_graduation, :affiliation, :to_param, :to_s, to: :biker
 
   # override find so we can search by netid
   def self.find(input)

@@ -20,16 +20,12 @@ class Biker < ActiveRecord::Base
     active && !has_bike_out?
   end
 
-  def full_name
-    "#{first_name} #{last_name}"
-  end
-
   def to_param
     netid
   end
 
   def to_s
-    full_name
+    "#{first_name} #{last_name}"
   end
 
   # override find so we can search by netid
