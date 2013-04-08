@@ -16,9 +16,12 @@ class CheckoutsController < ApplicationController
       redirect_to root, { status: :unauthorized }
     end
 
-    @checkouts = Checkout.order(params[:order] || 'created_at DESC')
-    @checkouts = @checkouts.limit(params[:limit] || 20)
-    @checkouts = @checkouts.offset(params[:offset] || 0)
+    order_regex = /\A(bike_id|biker_id|created_at|location_id|staffer_id)(\s(desc|asc))?\z/i
+
+    @checkouts = Checkout
+      .order(params[:order].match(order_regex) ? params[:order] : 'created_at DESC')
+      .limit(params[:limit] ? params[:limit].to_i : 20)
+      .offset(params[:offset].to_i)
 
     if params[:bike_id]
       @bike = Bike.find(params[:bike_id])
