@@ -5,8 +5,8 @@ class Bike < ActiveRecord::Base
   belongs_to :location
   validates_inclusion_of :condition, in: %w( fucked operational offline )
 
-  scope :checked_out, joins(:checkouts).where({checkouts: {returned_at: nil}})
-  scope :overdue, joins(:checkouts).where("checkouts.returned_at IS NULL AND checkouts.due_at < ?", Time.now)
+  scope :checked_out, joins(:checkouts).merge(Checkout.checked_out)
+  scope :overdue, -> { joins(:checkouts).merge(Checkout.overdue) }
 
   delegate :overdue?, to: :active_checkout, allow_nil: true
 
