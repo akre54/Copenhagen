@@ -11,6 +11,7 @@ class Biker < ActiveRecord::Base
   AFFILIATIONS = %w(undergraduate graduate faculty staff).freeze
 
   validates_inclusion_of :affiliation, in: AFFILIATIONS
+  validates_format_of :netid, with: /\A[a-z]{1,3}\d{1,3}\z/
 
   def has_bike_out?
     checkouts.checked_out != []
