@@ -13,7 +13,7 @@ class CheckoutsController < ApplicationController
   # GET /locations/1/checkouts
   # GET /locations/1/checkouts.json
   def index
-    unless current_user.admin? || (params[:location_id] && session[:location_id] == params[:location_id])
+    unless current_user.admin? || session[:location_id] == params[:location_id]
       redirect_to root, { status: :unauthorized }
     end
 
