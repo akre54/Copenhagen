@@ -9,6 +9,7 @@
       <% unless @staffer %><th>Checked Out By</th><% end %>
       <th>Time</th>
       <th>Due Back</th>
+      <th>Returned</th>
     </tr>
   </thead>
   <tbody>
@@ -28,6 +29,7 @@
         <% unless @staffer %><td><%= link_to checkout.staffer, checkout.staffer %></td><% end %>
         <td><%= l checkout.created_at, format: :medium %></td>
         <td><%= l checkout.due_at, format: :short %></td>
+        <td><%= l checkout.returned_at, format: :medium unless checkout.returned_at.nil? %></td>
       </tr>
     <% end %>
   </tbody>
