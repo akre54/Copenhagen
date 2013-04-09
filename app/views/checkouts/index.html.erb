@@ -8,8 +8,7 @@
       <% unless @location %><th><%= sortable :location_id %></th><% end %>
       <% unless @staffer %><th><%= sortable :staffer_id, 'Checked Out By' %></th><% end %>
       <th><%= sortable :created_at, 'Time' %></th>
-      <th><%= sortable :due_at, 'Due Back' %></th>
-      <th><%= sortable :returned_at, 'Returned' %></th>
+      <th><%= sortable :returned_at, 'Returned At / Due Back' %></th>
     </tr>
   </thead>
   <tbody>
@@ -23,13 +22,12 @@
         end
       %>
       <tr class="<%= row_class %>">
-        <% unless @bike %><td><%= link_to checkout.bike.id, checkout.bike %></td><% end %>
+        <% unless @bike %><td><%= link_to checkout.bike.id, checkout %></td><% end %>
         <% unless @biker %> <td><%= link_to checkout.biker, checkout.biker %></td><% end %>
         <% unless @location %><td><%= link_to checkout.location.name, checkout.location %></td><% end %>
         <% unless @staffer %><td><%= link_to checkout.staffer, checkout.staffer %></td><% end %>
         <td><%= l checkout.created_at, format: :medium %></td>
-        <td><%= l checkout.due_at, format: :short %></td>
-        <td><%= l checkout.returned_at, format: :medium unless checkout.returned_at.nil? %></td>
+        <td><%= checkout.checked_out? ? l(checkout.due_at, format: :short) : l(checkout.returned_at, format: :medium) %></td>
       </tr>
     <% end %>
   </tbody>
