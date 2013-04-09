@@ -12,13 +12,8 @@ class Checkout < ActiveRecord::Base
 
   validate :can_be_checked_out, on: :create
 
-  before_create do
-    due_at = Date.today + 2.days
-  end
-
-  after_create do
-    location.decrement(:num_helmets) if helmet_requested?
-  end
+  before_create { due_at = Date.today + 2.days }
+  after_create { location.decrement(:num_helmets) if helmet_requested? }
 
 
   def checked_out?

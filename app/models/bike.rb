@@ -8,16 +8,7 @@ class Bike < ActiveRecord::Base
   scope :checked_out, joins(:checkouts).merge(Checkout.checked_out)
   scope :overdue, -> { joins(:checkouts).merge(Checkout.overdue) }
 
-  delegate :overdue?, to: :active_checkout, allow_nil: true
-
-  def checkin
-    checkout = active_checkout
-    if checkout
-      checkout.checkin
-    else
-      errors.add :base, "bike #{id} wasn't checked out to begin with."
-    end
-  end
+  delegate :checkin, :due_at, :overdue?, to: :active_checkout, allow_nil: true
 
   def active_checkout
     checkouts.checked_out.first
@@ -27,18 +18,12 @@ class Bike < ActiveRecord::Base
     checkouts.order('created_at DESC').first
   end
 
-  def due_at
-    checkout = active_checkout
-    checkout.due_at if checkout
-  end
-
   def checked_out?
     active_checkout != nil
   end
 
   def checked_out_to
-    checkout = active_checkout
-    checkout.biker if checkout
+    active_checkout.try(:biker)
   end
 
   def to_s
