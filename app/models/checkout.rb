@@ -25,7 +25,7 @@ class Checkout < ActiveRecord::Base
   end
 
   def checkin
-    raise "Bike was not checked out to begin with" unless checked_out?
+    errors.add :base, "Bike was not checked out to begin with" and return unless checked_out?
 
     location.increment(:num_helmets) if helmet_requested?
     update_attribute(:returned_at, Time.now)
