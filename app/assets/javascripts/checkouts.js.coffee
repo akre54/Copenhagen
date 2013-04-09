@@ -12,5 +12,5 @@ $ ->
         for biker in resp
           biker.tokens = biker.full_name.split(' ').concat(biker.netid)
         resp
-    template: (data)->
+    template: (data) ->
       "<div class='tt-suggestion'><p>#{data.full_name} <strong>(#{data.netid})</strong></p></div>"
