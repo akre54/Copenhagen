@@ -30,7 +30,7 @@
         <td><%= bike.condition %></td>
         <td><%= bike.checked_out? ? link_to(bike.checked_out_to, bike.checked_out_to) : 'no' %></td>
         <% if current_user.admin? %>
-        <td><%= link_to "#{bike.location.name}", bike.location %></td>
+        <td><%= link_to bike.location.name, bike.location %></td>
         <% end %>
         <td>
           <% if bike.checked_out? %>
