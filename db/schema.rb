@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130407205906) do
+ActiveRecord::Schema.define(:version => 20130410172128) do
 
   create_table "bikers", :force => true do |t|
     t.string   "first_name"
@@ -20,9 +20,9 @@ ActiveRecord::Schema.define(:version => 20130407205906) do
     t.string   "email"
     t.string   "affiliation"
     t.integer  "year_of_graduation"
-    t.datetime "created_at",                            :null => false
-    t.datetime "updated_at",                            :null => false
-    t.boolean  "active",             :default => true,  :null => false
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
+    t.boolean  "active",             :default => true, :null => false
   end
 
   add_index "bikers", ["email"], :name => "index_bikers_on_email", :unique => true
@@ -32,11 +32,12 @@ ActiveRecord::Schema.define(:version => 20130407205906) do
     t.string   "color"
     t.text     "condition"
     t.integer  "location_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
     t.string   "image_url"
     t.string   "manufacturer"
     t.string   "model"
+    t.text     "notes",        :default => "", :null => false
   end
 
   create_table "checkouts", :force => true do |t|
