@@ -9,7 +9,7 @@ class BikesController < ApplicationController
     @bikes = Bike.order(:id)
 
     unless current_user.admin?
-      @bikes = @bikes.where(location_id: session[:location_id])
+      @bikes = @bikes.operational.where(location_id: session[:location_id])
     end
 
     respond_to do |format|

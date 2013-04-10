@@ -5,6 +5,7 @@ class Bike < ActiveRecord::Base
   belongs_to :location
   validates_inclusion_of :condition, in: %w( fucked operational offline )
 
+  scope :operational, where(condition: :operational)
   scope :checked_out, joins(:checkouts).merge(Checkout.checked_out)
   scope :overdue, -> { joins(:checkouts).merge(Checkout.overdue) }
 
