@@ -5,9 +5,7 @@ class Bike < ActiveRecord::Base
   belongs_to :location
 
   CONDITIONS = %w( fucked operational offline )
-  COLORS = %w( red blue purple )
   validates_inclusion_of :condition, in: CONDITIONS
-  validates_inclusion_of :color, in: COLORS
 
   scope :operational, where(condition: :operational)
   scope :checked_out, joins(:checkouts).merge(Checkout.checked_out)
