@@ -2,6 +2,8 @@ class CheckoutsController < ApplicationController
   before_filter :require_login
   before_filter :require_admin, except: [:new, :create, :checkin]
 
+  layout :choose_layout
+
   helper_method :sort_column, :sort_direction
 
   # GET /checkouts
@@ -128,6 +130,10 @@ class CheckoutsController < ApplicationController
   end
 
   private
+
+  def choose_layout
+    request.xhr? ? nil : 'application'
+  end
 
   def sort_column
     Checkout.column_names.include?(params[:sort]) ? params[:sort] : 'created_at'
