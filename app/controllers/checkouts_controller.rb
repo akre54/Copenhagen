@@ -63,7 +63,7 @@ class CheckoutsController < ApplicationController
     @checkout = Checkout.new
 
     if params[:bike_id]
-      @bike = Bike.find(params[:bike_id])
+      @checkout.bike_id = params[:bike_id]
     else
       @bikes = current_user.admin? ? Bike.operational : Bike.operational.find_all_by_location_id(session[:location_id])
     end
@@ -80,7 +80,7 @@ class CheckoutsController < ApplicationController
   # POST /bikes/1/checkouts.json
   def create
     @biker = Biker.find_by_netid(params[:checkout][:biker][:netid])
-    @bike = Bike.find(params[:checkout][:bike_id])
+    @bike = Bike.find(params[:checkout][:bike][:id])
 
     @checkout = Checkout.new(
       bike: @bike,

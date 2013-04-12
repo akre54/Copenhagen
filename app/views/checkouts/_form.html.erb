@@ -12,11 +12,13 @@
   <% end %>
 
   <div class="field">
-    <% if @bike %>
-      <%= f.hidden_field :bike_id, value: @bike.id %>
-    <% else %>
-      <%= f.label :bike_id, "Bike: " %>
-      <%= collection_select :checkout, :bike_id, @bikes, :id, :to_s, prompt: true %>
+    <%= f.fields_for :bike do |b| %>
+      <% if @checkout.bike_id %>
+        <%= b.hidden_field :id, value: @checkout.bike_id %>
+      <% else %>
+        <%= b.label :id, "Bike: " %>
+        <%= b.collection_select :id, @bikes, :id, :to_s, prompt: true %>
+      <% end %>
     <% end %>
   </div>
 
