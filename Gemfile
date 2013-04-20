@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # base
-gem 'rails', '3.2.12'
+gem 'rails', '3.2.13'
 gem 'thin'
 
 # views
