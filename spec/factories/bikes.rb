@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :bike do
-    color "MyString"
-    condition "MyText"
-    location 1
+    color "Blue"
+    condition "operational"
+    location
   end
 end

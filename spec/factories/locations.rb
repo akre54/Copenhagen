@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :location do
-    name "MyString"
-    lat 1.5
-    long 1.5
+    name { Faker::Name::first_name }
+    latlong "40.732082,-73.992005"
+    num_helmets 4
   end
 end

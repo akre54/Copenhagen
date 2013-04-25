@@ -34,7 +34,9 @@ class Checkout < ActiveRecord::Base
   private
 
   def can_be_checked_out
-    if bike.checked_out?
+    if bike.condition == 'offline'
+      errors.add :base, "Bike cannot be checked out because it is offline."
+    elsif bike.checked_out?
       errors.add :base, "Bike already checked out to #{bike.checked_out_to}"
     elsif biker.has_bike_out?
       errors.add :base, "#{biker} already has a bike checked out. Can't check out more than one."

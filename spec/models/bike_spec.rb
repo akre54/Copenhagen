@@ -1,5 +1,11 @@
 require 'spec_helper'
 
 describe Bike do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  describe 'checking out' do
+
+    let(:biker) { FactoryGirl.build(:biker) }
+
+    subject { FactoryGirl.build(:bike) }
+  end
 end

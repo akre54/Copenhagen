@@ -2,5 +2,12 @@
 
 FactoryGirl.define do
   factory :checkout do
+    bike
+    biker
+    location
+    staffer
+    helmet_requested true
+    due_at Date.today + 2.days
+    returned_at nil
   end
 end
