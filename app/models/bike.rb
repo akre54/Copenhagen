@@ -29,7 +29,7 @@ class Bike < ActiveRecord::Base
   end
 
   def operational?
-    self.date_offline != nil
+    date_offline == nil
   end
 
   def to_s

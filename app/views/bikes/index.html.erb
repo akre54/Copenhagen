@@ -7,10 +7,10 @@
     <tr>
       <th>Bike #</th>
       <th>Color</th>
-      <th>Condition</th>
       <th>Checked out?</th>
       <% if current_user.admin? %>
         <th>Location</th>
+        <th>Notes</th>
       <% end %>
       <th></th>
     </tr>
@@ -27,10 +27,10 @@
       <tr class="<%= row_class %>">
         <td><%= link_to bike, bike_path(bike) %></td>
         <td><%= bike.color %></td>
-        <td><%= bike.condition %></td>
         <td><%= bike.checked_out? ? link_to(bike.checked_out_to, bike.checked_out_to) : 'no' %></td>
         <% if current_user.admin? %>
-        <td><%= link_to bike.location.name, bike.location %></td>
+          <td><%= if bike.location then link_to bike.location.name, bike.location end %></td>
+          <td><%= bike.notes %></td>
         <% end %>
         <td>
           <% if bike.operational? %>
