@@ -4,12 +4,9 @@ class Bike < ActiveRecord::Base
   has_many :checkouts
   belongs_to :location
 
-  CONDITIONS = %w( fucked operational offline )
-  validates_inclusion_of :condition, in: CONDITIONS
-
-  scope :operational, where(condition: :operational)
-  scope :offline, where(condition: :offline)
-  scope :fucked, where(condition: :fucked)
+  scope :operational, where(date_offline: nil)
+  scope :offline, where("date_offline IS NOT NULL")
+  scope :fucked, where(fucked: true)
   scope :checked_out, joins(:checkouts).merge(Checkout.checked_out)
   scope :overdue, -> { joins(:checkouts).merge(Checkout.overdue) }
 
@@ -32,7 +29,7 @@ class Bike < ActiveRecord::Base
   end
 
   def operational?
-    self.condition == 'operational'
+    self.date_offline != nil
   end
 
   def to_s

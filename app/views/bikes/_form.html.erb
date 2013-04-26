@@ -6,12 +6,6 @@
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :condition, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.collection_select :condition, Bike::CONDITIONS, :to_s, :titleize %>
-    </div>
-  </div>
-  <div class="control-group">
     <%= f.label :location, :class => 'control-label' %>
     <div class="controls">
       <%= f.collection_select :location_id, Location.all, :id, :name %>
