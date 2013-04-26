@@ -66,6 +66,7 @@ class CheckoutsController < ApplicationController
       @checkout.bike_id = params[:bike_id]
     else
       @bikes = current_user.admin? ? Bike.operational : Bike.operational.find_all_by_location_id(session[:location_id])
+      @bikes = @bikes.order(:id)
     end
 
     respond_to do |format|
