@@ -33,5 +33,4 @@ class Biker < ActiveRecord::Base
   def self.find(input)
     input.to_i == 0 ? find_by_netid(input) : super
   end
-
 end

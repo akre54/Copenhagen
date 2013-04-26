@@ -13,7 +13,7 @@
   <dd><%= @bike.condition %></dd>
   <% end %>
   <dt><strong><%= model_class.human_attribute_name(:location_id) %>:</strong></dt>
-  <dd><%= link_to @bike.location.name, @bike.location %></dd>
+  <dd><%= if @bike.location? then link_to @bike.location.name, @bike.location end %></dd>
   <dt><strong><%= model_class.human_attribute_name(:manufacturer) %>:</strong></dt>
   <dd><%= @bike.manufacturer %></dd>
   <dt><strong><%= model_class.human_attribute_name(:model) %>:</strong></dt>

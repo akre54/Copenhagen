@@ -9,6 +9,9 @@ Copenhagen::Application.routes.draw do
 
   resources :bikes do
     resources :checkouts, only: [:new, :create, :index]
+    collection do
+      get :fucked
+    end
   end
 
   resources :users, :bikers do

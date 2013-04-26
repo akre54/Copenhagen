@@ -8,6 +8,8 @@ class Bike < ActiveRecord::Base
   validates_inclusion_of :condition, in: CONDITIONS
 
   scope :operational, where(condition: :operational)
+  scope :offline, where(condition: :offline)
+  scope :fucked, where(condition: :fucked)
   scope :checked_out, joins(:checkouts).merge(Checkout.checked_out)
   scope :overdue, -> { joins(:checkouts).merge(Checkout.overdue) }
 
@@ -27,6 +29,10 @@ class Bike < ActiveRecord::Base
 
   def checked_out_to
     active_checkout.try(:biker)
+  end
+
+  def operational?
+    self.condition == 'operational'
   end
 
   def to_s

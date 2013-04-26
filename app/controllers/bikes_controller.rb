@@ -17,6 +17,11 @@ class BikesController < ApplicationController
     end
   end
 
+  def fucked
+    @bikes = Bike.fucked.order(:id)
+    render 'index'
+  end
+
   # GET /bikes/1
   # GET /bikes/1.json
   def show

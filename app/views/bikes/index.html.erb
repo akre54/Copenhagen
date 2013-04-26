@@ -33,10 +33,12 @@
         <td><%= link_to bike.location.name, bike.location %></td>
         <% end %>
         <td>
-          <% if bike.checked_out? %>
-            <%= link_to "check in", checkin_checkout_path(bike.active_checkout), method: :post %>
-          <% else %>
-            <%= link_to "check out", new_bike_checkout_path(bike), data: {toggle: :modal, target: '#checkout-modal'} %>
+          <% if bike.operational? %>
+            <% if bike.checked_out? %>
+              <%= link_to "check in", checkin_checkout_path(bike.active_checkout), method: :post %>
+            <% else %>
+              <%= link_to "check out", new_bike_checkout_path(bike), data: {toggle: :modal, target: '#checkout-modal'} %>
+            <% end %>
           <% end %>
           <% if current_user.admin? %>
             <div class="btn-group pull-right">
