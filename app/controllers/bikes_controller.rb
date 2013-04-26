@@ -17,6 +17,11 @@ class BikesController < ApplicationController
     end
   end
 
+  def offline
+    @bikes = Bike.offline.order(:id)
+    render 'index'
+  end
+
   def fucked
     @bikes = Bike.fucked.order(:id)
     render 'index'
