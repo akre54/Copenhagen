@@ -13,7 +13,10 @@ class Checkout < ActiveRecord::Base
   validate :can_be_checked_out, on: :create
 
   before_create { self.due_at = Date.today + 2.days }
-  after_create { location.decrement(:num_helmets) if helmet_requested? }
+  after_create do
+    bike.update_attribute(:location_id, nil)
+    location.decrement(:num_helmets) if helmet_requested?
+  end
 
 
   def checked_out?
@@ -26,6 +29,7 @@ class Checkout < ActiveRecord::Base
 
   def checkin
     errors.add :base, "Bike was not checked out to begin with" and return unless checked_out?
+    bike.update_attribute(:location_id, location.id)
 
     location.increment(:num_helmets) if helmet_requested?
     update_attribute(:returned_at, Time.now)
