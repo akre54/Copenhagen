@@ -33,6 +33,6 @@ class Bike < ActiveRecord::Base
   end
 
   def to_s
-    "##{self.id} (#{self.manufacturer} #{self.model})"
+    "##{id} (#{manufacturer} #{model})"
   end
 end
