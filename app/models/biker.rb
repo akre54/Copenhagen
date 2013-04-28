@@ -14,7 +14,7 @@ class Biker < ActiveRecord::Base
   validates_format_of :netid, with: /\A[a-z]{2,5}\d{1,5}\z/
 
   def has_bike_out?
-    checkouts.checked_out != []
+    !checkouts.checked_out.empty?
   end
 
   def can_check_out?
