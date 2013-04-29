@@ -14,8 +14,8 @@ class Checkout < ActiveRecord::Base
 
   before_create { self.due_at = Date.today + 2.days }
   after_create do
-    bike.update_attribute(:location_id, nil)
     location.decrement(:num_helmets) if helmet_requested?
+    bike.update_attribute(:location_id, nil)
   end
 
 
