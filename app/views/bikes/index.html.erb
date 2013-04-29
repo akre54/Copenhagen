@@ -22,6 +22,8 @@
           row_class = "checked-out info"
         elsif bike.overdue?
           row_class = "overdue error"
+        elsif !bike.operational?
+          row_class = "offline warning"
         end
       %>
       <tr class="<%= row_class %>">
@@ -39,6 +41,8 @@
             <% else %>
               <%= link_to "check out", new_bike_checkout_path(bike), data: {toggle: :modal, target: '#checkout-modal'} %>
             <% end %>
+          <% else %>
+            <i>offline</i>
           <% end %>
           <% if current_user.admin? %>
             <div class="btn-group pull-right">
