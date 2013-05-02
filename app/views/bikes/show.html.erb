@@ -22,6 +22,7 @@
 
 <div class="form-actions">
   <%= link_to 'Back', bikes_path, :class => 'btn'  %>
+  <%= link_to 'Checkout', new_bike_checkout_path(@bike), :class => 'btn' %>
   <%= link_to 'View Checkouts', bike_checkouts_path(@bike), :class => 'btn' %>
   <% if current_user.admin? %>
   <%= link_to 'Edit', edit_bike_path(@bike), :class => 'btn' %>
