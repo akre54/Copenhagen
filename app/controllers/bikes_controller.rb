@@ -17,11 +17,13 @@ class BikesController < ApplicationController
     end
   end
 
+  # GET /bikes/offline
   def offline
     @bikes = Bike.offline.order(:id)
     render 'index'
   end
 
+  # GET /bikes/fucked
   def fucked
     @bikes = Bike.fucked.order(:id)
     render 'index'
