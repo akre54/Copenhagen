@@ -48,8 +48,9 @@
             <div class="btn-group pull-right">
               <a class="btn dropdown-toggle btn-mini" data-toggle="dropdown" href="#">Admin <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="<%= edit_bike_path(bike) %>"><i class="icon-pencil"></i> Edit</a></li>
-                <li><a href="<%= bike_path(bike) %>" data-method="delete" data-confirm="Are you sure?" rel="nofollow"><i class="icon-trash"></i> Delete</a></li>
+                <li><a href="<%= edit_bike_path(bike) %>" class="edit-bike"><i class="icon-pencil"></i> Edit</a></li>
+                <li><a href="<%= edit_bike_path(bike) %>" class="take-bike-offline"><i class="icon-wrench"></i> Take Offline</a></li>
+                <li><a href="<%= edit_bike_path(bike) %>" class="update-bike-location"><i class="icon-map-marker"></i> Update Location</a></li>
               </ul>
             </div>
           <% end %>
