@@ -7,6 +7,8 @@ gem 'thin'
 # views
 gem 'bootstrap-sass'
 
+gem 'requirejs-rails'
+
 # auth
 gem 'devise'
 
