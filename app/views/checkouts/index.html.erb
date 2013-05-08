@@ -1,5 +1,11 @@
 <h1>Listing checkouts</h1>
 
+<script type="text/javascript">
+  window.COPE.checkouts = JSON.parse("<%=j Checkout.all.to_json.html_safe %>");
+</script>
+
+<div id="chart-contain"></div>
+
 <table class="checkouts table table-striped">
   <thead>
     <tr>

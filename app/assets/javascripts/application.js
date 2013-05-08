@@ -17,4 +17,7 @@
 //= require handlebars
 //= require typeahead.js/dist/typeahead
 //= require underscore/underscore
+//= require d3/d3
 //= require_tree .
+
+window.COPE = {};
