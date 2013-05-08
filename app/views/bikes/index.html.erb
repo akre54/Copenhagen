@@ -32,7 +32,7 @@
         <td><%= bike.checked_out? ? link_to(bike.checked_out_to, bike.checked_out_to) : 'no' %></td>
         <% if current_user.admin? %>
           <td><%= if bike.location then link_to bike.location.name, bike.location else link_to 'Fucked', fucked_bikes_path end %></td>
-          <td><%= bike.notes %></td>
+          <td><%= bike.notes.empty? ? '—' : bike.notes %></td>
         <% end %>
         <td>
           <% if bike.operational? %>
