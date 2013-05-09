@@ -9,15 +9,7 @@
 //
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
-//
-//= require jquery/jquery
-//= require jquery-ujs/src/rails
-//= require twitter/bootstrap/bootstrap-dropdown
-//= require twitter/bootstrap/bootstrap-modal
-//= require handlebars
-//= require typeahead.js/dist/typeahead
-//= require underscore/underscore
-//= require d3/d3
-//= require_tree .
 
-window.COPE = {};
+require ['jquery'], ($) ->
+  $ ->
+    window.COPE = {}
