@@ -13,10 +13,6 @@ Copenhagen::Application.routes.draw do
       get :offline
       get :fucked
     end
-    member do
-      post :bring_online
-      post :take_offline
-    end
   end
 
   resources :users, :bikers do

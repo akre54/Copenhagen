@@ -8,6 +8,8 @@ define [
     events:
       'click [data-action="create-checkout"]': 'newCheckoutPopup'
       'click [data-action="update-location"]': 'updateLocation'
+      'click [data-action="take-offline"]': 'takeOffline'
+      'click [data-action="bring-online"]': 'bringOnline'
 
     newCheckoutPopup: (e) ->
       popup = new Popup
@@ -16,7 +18,17 @@ define [
 
       false
 
-    updateLocation: (e) ->
+    updateLocation: ->
       location = prompt('enter a new location?')
       @model.save('location_id', location)
+      false
+
+    takeOffline: ->
+      if confirm('are you sure?')
+        @model.save('offline', true)
+      false
+
+    bringOnline: ->
+      if confirm('are you sure?')
+        @model.save('offline', false)
       false

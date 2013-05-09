@@ -77,6 +77,12 @@ class BikesController < ApplicationController
   def update
     @bike = Bike.find(params[:id])
 
+    if @bike.operational? && params[:bike][:online] == false
+      @bike.take_offline!
+    elsif !@bike.operational? && params[:bike][:online] == true
+      @bike.bring_online!
+    end
+
     respond_to do |format|
       if @bike.update_attributes(params[:bike])
         format.html { redirect_to @bike, notice: 'Bike was successfully updated.' }
@@ -85,30 +91,6 @@ class BikesController < ApplicationController
         format.html { render action: "edit" }
         format.json { render json: @bike.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  # POST /bikes/1/take_offline
-  # POST /bikes/1/take_offline.json
-  def take_offline
-    @bike = Bike.find(params[:id])
-    @bike.take_offline
-
-    respond_to do |format|
-      format.html { redirect_to bikes_url }
-      format.json { head :no_content }
-    end
-  end
-
-  # POST /bikes/1/bring_online
-  # POST /bikes/1/bring_online.json
-  def bring_online
-    @bike = Bike.find(params[:id])
-    @bike.bring_line
-
-    respond_to do |format|
-      format.html { redirect_to bikes_url }
-      format.json { head :no_content }
     end
   end
 end
