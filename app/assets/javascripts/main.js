@@ -37,6 +37,13 @@ require.config({
 });
 
 require(['jquery', 'backbone', 'router', 'bootstrap-dropdown'], function($, Backbone, CopeRouter) {
+  // ensure CSRF token in header before sync
+  $.ajaxSetup({
+      beforeSend: function(xhr){
+          xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
+      }
+  });
+
   $(function() {
     new CopeRouter();
     Backbone.history.start({pushState: true});
