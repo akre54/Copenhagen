@@ -77,14 +77,14 @@ class BikesController < ApplicationController
   def update
     @bike = Bike.find(params[:id])
 
-    if @bike.operational? && params[:bike][:online] == false
+    if @bike.operational? && params[:online] == false
       @bike.take_offline!
-    elsif !@bike.operational? && params[:bike][:online] == true
+    elsif !@bike.operational? && params[:online] == true
       @bike.bring_online!
     end
 
     respond_to do |format|
-      if @bike.update_attributes(params[:bike])
+      if @bike.update_attributes(params)
         format.html { redirect_to @bike, notice: 'Bike was successfully updated.' }
         format.json { head :no_content }
       else
