@@ -1,4 +1,4 @@
-require ['views/base/view', 'd3'], (Chaplin, d3) ->
+require ['views/base/view', 'd3'], (View, d3) ->
   class CheckoutsIndex extends View
     autoRender: true
 

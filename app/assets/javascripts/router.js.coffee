@@ -10,8 +10,9 @@ define ['require', 'backbone'], (require, Backbone) ->
       'checkouts/new': 'checkoutsNew'
 
     bikesIndex: ->
-      require ['views/pages/bikes_index'], (BikesIndexView) ->
-        new BikesIndexView
+      require ['views/pages/bikes_index', 'models/bikes_collection'], (BikesIndexView, BikesCollection) ->
+        @collection = new BikesCollection(COPE.bikes)
+        new BikesIndexView {@collection}
 
     BikesShow: (id) ->
       require ['views/pages/bikes_show'], (BikesShowView) ->

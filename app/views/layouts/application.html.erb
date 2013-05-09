@@ -4,6 +4,9 @@
     <title>Copenhagen</title>
     <%= stylesheet_link_tag    "application", :media => "all" %>
     <%= stylesheet_link_tag params[:controller] %>
+    <script type="text/javascript">
+      window.COPE = {};
+    </script>
     <%= requirejs_include_tag "main.js" %>
     <%= csrf_meta_tags %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

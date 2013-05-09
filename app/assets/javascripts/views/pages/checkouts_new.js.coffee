@@ -1,5 +1,5 @@
-define ['jquery', 'chaplin', 'typeahead'], ($, Chaplin) ->
-  class CheckoutsNew extends Chaplin.View
+define ['views/base/view', 'typeahead'], (View) ->
+  class CheckoutsNew extends View
 
     el: 'body'
 

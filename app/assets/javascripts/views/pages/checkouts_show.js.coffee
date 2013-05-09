@@ -1,2 +1,2 @@
-define ['jquery', 'views/base/view'], ($, Chaplin) ->
+define ['views/base/view'], (View) ->
   class CheckoutShow extends View

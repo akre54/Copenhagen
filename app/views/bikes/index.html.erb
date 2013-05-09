@@ -21,3 +21,7 @@
     <% end %>
   </tbody>
 </table>
+
+<script type="text/javascript">
+  window.COPE.bikes = JSON.parse("<%=j @bikes.to_json.html_safe %>");
+</script>
