@@ -1,9 +1,8 @@
 define [
-  'jquery',
   'views/base/view',
   'views/pages/checkouts_new',
-  'bootstrap-modal'
-], ($, View, NewCheckoutView) ->
+  'views/modules/popup'
+], (View, NewCheckoutView, Popup) ->
   class BikeRow extends View
 
     events:
@@ -11,26 +10,13 @@ define [
       'click [data-action="update-location"]': 'updateLocation'
 
     newCheckoutPopup: (e) ->
-      # setup popup container el
-      popupEl = $('#checkout-modal')
-      unless popupEl.length
-        popupEl = $('<div>').attr
-          id: "checkout-modal"
-          class: "modal hide fade"
-          tabindex: "-1"
-          role: "dialog"
-          'aria-hidden': "true"
-        popupEl.append('<div class="modal-body"></div>')
-        $('body').prepend(popupEl)
-
-      # hack the remote option until bootstrap gets their shit together
-      popupEl.find('.modal-body').load e.target.href, ->
-        new NewCheckoutView el: popupEl
-
-      popupEl.modal('show')
+      popup = new Popup
+      popup.load e.target.href, ->
+        new NewCheckoutView el: popup.el
 
       false
 
     updateLocation: (e) ->
       location = prompt('enter a new location?')
+      @model.save('location_id', location)
       false
