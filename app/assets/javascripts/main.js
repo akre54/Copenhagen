@@ -33,7 +33,7 @@ require(['jquery', 'underscore', 'router'], function($, _, CopeRouter) {
   _.noConflict();
 
   $(function() {
-    new CopeRouter()
-    Backbone.history.start pushState: true
+    new CopeRouter();
+    Backbone.history.start({pushState: true});
   });
 });

@@ -8,6 +8,7 @@
     "typeahead-bootstrap.css": "jharding/typeahead.js-bootstrap.css",
     "moment": "2",
     "d3": "3",
-    "underscore": "~1.4.4"
+    "underscore": "~1.4.4",
+    "backbone": "1.0.0"
   }
 }
