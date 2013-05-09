@@ -88,11 +88,23 @@ class BikesController < ApplicationController
     end
   end
 
-  # DELETE /bikes/1
-  # DELETE /bikes/1.json
-  def destroy
+  # POST /bikes/1/take_offline
+  # POST /bikes/1/take_offline.json
+  def take_offline
     @bike = Bike.find(params[:id])
-    @bike.destroy
+    @bike.take_offline
+
+    respond_to do |format|
+      format.html { redirect_to bikes_url }
+      format.json { head :no_content }
+    end
+  end
+
+  # POST /bikes/1/bring_online
+  # POST /bikes/1/bring_online.json
+  def bring_online
+    @bike = Bike.find(params[:id])
+    @bike.bring_line
 
     respond_to do |format|
       format.html { redirect_to bikes_url }

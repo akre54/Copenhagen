@@ -9,9 +9,10 @@ define [
     el: 'body'
 
     events:
-      'click .js-create-checkout': 'showNewCheckoutPopup'
+      'click [data-action="create-checkout"]': 'newCheckoutPopup'
+      'click [data-action="update-location"]': 'updateLocation'
 
-    showNewCheckoutPopup: (e) ->
+    newCheckoutPopup: (e) ->
       # setup popup container el
       popupEl = $('#checkout-modal')
       unless popupEl.length
@@ -30,4 +31,7 @@ define [
 
       popupEl.modal('show')
 
-    false
+      false
+
+    updateLocation: (e) ->
+      false

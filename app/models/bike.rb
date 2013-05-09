@@ -32,6 +32,14 @@ class Bike < ActiveRecord::Base
     date_offline == nil
   end
 
+  def take_offline
+    update_attribute(:date_offline, Time.now)
+  end
+
+  def bring_online
+    update_attribute(:date_offline, nil)
+  end
+
   def to_s
     "##{id} (#{manufacturer} #{model})"
   end

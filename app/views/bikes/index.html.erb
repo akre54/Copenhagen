@@ -39,18 +39,22 @@
             <% if bike.checked_out? %>
               <%= link_to "check in", checkin_checkout_path(bike.active_checkout), method: :post %>
             <% else %>
-              <%= link_to "check out", new_bike_checkout_path(bike), class: 'js-create-checkout' %>
+              <%= link_to "check out", new_bike_checkout_path(bike), data: { action: 'create-checkout' } %>
             <% end %>
           <% else %>
             <i>offline</i>
           <% end %>
           <% if current_user.admin? %>
             <div class="btn-group pull-right">
-              <a class="btn dropdown-toggle btn-mini" data-toggle="dropdown" href="#">Admin <span class="caret"></span></a>
+              <%= link_to 'Admin <span class="caret"></span>'.html_safe, '#', class: "btn dropdown-toggle btn-mini", data: { toggle: "dropdown" } %>
               <ul class="dropdown-menu">
-                <li><a href="<%= edit_bike_path(bike) %>" class="edit-bike"><i class="icon-pencil"></i> Edit</a></li>
-                <li><a href="<%= edit_bike_path(bike) %>" class="take-bike-offline"><i class="icon-wrench"></i> Take Offline</a></li>
-                <li><a href="<%= edit_bike_path(bike) %>" class="update-bike-location"><i class="icon-map-marker"></i> Update Location</a></li>
+                <li><%= link_to '<i class="icon-pencil"></i> Edit'.html_safe, edit_bike_path(bike), data: { action: 'edit' } %></li>
+                <% if bike.operational? %>
+                  <li><%= link_to '<i class="icon-wrench"></i> Take Offline'.html_safe, take_offline_bike_path(bike), method: :post %></li>
+                <% else %>
+                  <li><%= link_to '<i class="icon-wrench"></i> Bring online'.html_safe, bring_online_bike_path(bike), method: :post %></li>
+                <% end %>
+                <li><%= link_to '<i class="icon-map-marker"></i> Update Location'.html_safe, edit_bike_path(bike), data: { action: 'update-location' } %></li>
               </ul>
             </div>
           <% end %>
