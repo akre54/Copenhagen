@@ -86,7 +86,7 @@ class BikesController < ApplicationController
     respond_to do |format|
       if @bike.update_attributes(params)
         format.html { redirect_to @bike, notice: 'Bike was successfully updated.' }
-        format.json { head :no_content }
+        format.json { render json: @bike, status: :accepted, location: @bike }
       else
         format.html { render action: "edit" }
         format.json { render json: @bike.errors, status: :unprocessable_entity }
