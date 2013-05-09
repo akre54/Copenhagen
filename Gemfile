@@ -4,11 +4,6 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.13'
 gem 'thin'
 
-# views
-gem 'bootstrap-sass'
-
-gem 'requirejs-rails'
-
 # auth
 gem 'devise'
 
@@ -22,6 +17,10 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
 
   gem 'twitter-bootstrap-rails'
+  gem 'bootstrap-sass'
+
+  gem 'requirejs-rails'
+
 
   gem 'handlebars_assets', '~> 0.12.0'
 
