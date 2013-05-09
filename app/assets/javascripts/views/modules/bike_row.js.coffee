@@ -1,12 +1,10 @@
 define [
   'jquery',
-  'views/base/collection_view',
+  'views/base/view',
   'views/pages/checkouts_new',
   'bootstrap-modal'
-], ($, CollectionView, NewCheckoutView) ->
-  class BikesIndex extends CollectionView
-    el: 'body'
-    itemView: Bike
+], ($, View, NewCheckoutView) ->
+  class BikeRow extends View
 
     events:
       'click [data-action="create-checkout"]': 'newCheckoutPopup'

@@ -9,6 +9,7 @@ require.config({
     'typeahead': 'typeahead.js/dist/typeahead',
     'underscore': 'underscore/underscore',
     'backbone': 'backbone/backbone',
+    'chaplin': 'chaplin/amd/chaplin',
     'd3': 'd3/d3'
   },
   shim: {

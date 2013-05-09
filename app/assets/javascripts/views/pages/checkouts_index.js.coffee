@@ -1,7 +1,6 @@
-require ['backbone', 'd3'], (Backbone, d3) ->
-  class CheckoutsIndex extends Backbone.View
-    initialize: ->
-      @render()
+require ['views/base/view', 'd3'], (Chaplin, d3) ->
+  class CheckoutsIndex extends View
+    autoRender: true
 
     render: ->
       @setupChart()

@@ -1,10 +1,9 @@
-define ['jquery', 'backbone', 'typeahead'], ($, Backbone) ->
-  class CheckoutsNew extends Backbone.View
+define ['jquery', 'chaplin', 'typeahead'], ($, Chaplin) ->
+  class CheckoutsNew extends Chaplin.View
 
     el: 'body'
 
-    initialize: ->
-      @render()
+    autoRender: true
 
     render: ->
       @$('#checkout_biker_netid').typeahead

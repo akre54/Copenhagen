@@ -1,2 +1,2 @@
-define ['jquery', 'backbone'], ($, Backbone) ->
-  class CheckoutShow extends Backbone.View
+define ['jquery', 'views/base/view'], ($, Chaplin) ->
+  class CheckoutShow extends View

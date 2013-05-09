@@ -1,2 +1,2 @@
-define ['backbone'], (Backbone) ->
-  class Bike extends Backbone.Model
+define ['models/base/model'], (Model) ->
+  class Bike extends Model
