@@ -1,37 +1,41 @@
 require.config({
-  baseUrl: "/assets",
+  baseUrl: '/assets',
   paths: {
-    "jquery": "jquery/jquery",
-    "jqery-ujs": "jquery-ujs/src/rails",
-    "bootstrap-dropdown": "twitter/bootstrap/bootstrap-dropdown",
-    "bootstrap-modal": "twitter/bootstrap/bootstrap-modal",
-    "handlebars": "handlebars",
-    "typeahead": "typeahead.js/dist/typeahead",
-    "underscore": "underscore/underscore",
-    "d3": "d3/d3"
+    'jquery': 'jquery/jquery',
+    'jqery-ujs': 'jquery-ujs/src/rails',
+    'bootstrap-dropdown': 'twitter/bootstrap/bootstrap-dropdown',
+    'bootstrap-modal': 'twitter/bootstrap/bootstrap-modal',
+    'handlebars': 'handlebars',
+    'typeahead': 'typeahead.js/dist/typeahead',
+    'underscore': 'underscore/underscore',
+    'backbone': 'backbone/backbone',
+    'd3': 'd3/d3'
   },
   shim: {
-    "jquery-ujs": {
-      deps: ["jquery"]
+    'jquery': {
+      init: function() {
+        return $.noConflict(true);
+      }
     },
-    "bootstrap-dropdown": {
-      deps: ["jquery"]
+    'jquery-ujs': ['jquery'],
+    'bootstrap-dropdown': ['jquery'],
+    'bootstrap-modal': ['jquery'],
+    'typeahead': ['jquery'],
+    'underscore': {
+      init: function() {
+        return _.noConflict();
+      }
     },
-    "bootstrap-modal": {
-      deps: ["jquery"]
-    },
-    "typeahead": {
-      deps: ["jquery"]
+    'backbone': {
+      deps: ['underscore', 'jquery'],
+      init: function() {
+        return Backbone.noConflict();
+      }
     }
   }
 });
 
-require(['jquery', 'underscore', 'router'], function($, _, CopeRouter) {
-
-  // setup & remove globals
-  $.noConflict(true);
-  _.noConflict();
-
+require(['jquery', 'backbone', 'router', 'bootstrap-dropdown'], function($, Backbone, CopeRouter) {
   $(function() {
     new CopeRouter();
     Backbone.history.start({pushState: true});

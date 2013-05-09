@@ -39,7 +39,7 @@
             <% if bike.checked_out? %>
               <%= link_to "check in", checkin_checkout_path(bike.active_checkout), method: :post %>
             <% else %>
-              <%= link_to "check out", new_bike_checkout_path(bike), data: {toggle: :modal, target: '#checkout-modal'} %>
+              <%= link_to "check out", new_bike_checkout_path(bike), class: 'js-create-checkout' %>
             <% end %>
           <% else %>
             <i>offline</i>
