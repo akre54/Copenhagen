@@ -1,5 +1,5 @@
 require.config({
-  baseUrl: "assets",
+  baseUrl: "/assets",
   paths: {
     "jquery": "jquery/jquery",
     "jqery-ujs": "jquery-ujs/src/rails",
@@ -24,9 +24,16 @@ require.config({
       deps: ["jquery"]
     }
   }
-})
+});
 
-require(['jquery'], function($) {
+require(['jquery', 'underscore', 'router'], function($, _, CopeRouter) {
+
+  // setup & remove globals
+  $.noConflict(true);
+  _.noConflict();
+
   $(function() {
+    new CopeRouter()
+    Backbone.history.start pushState: true
   });
 });

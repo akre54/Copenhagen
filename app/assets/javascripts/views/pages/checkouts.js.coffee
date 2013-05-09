@@ -1,8 +1,5 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+require ['jquery', 'd3', 'typeahead'], ($, d3) ->
 
-$ ->
   # for checkouts#show. eventually need these to be separate files
   $('#checkout_biker_netid').typeahead
     name: 'bikers'
