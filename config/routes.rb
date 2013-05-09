@@ -15,11 +15,11 @@ Copenhagen::Application.routes.draw do
     end
   end
 
-  resources :users, :bikers do
+  resources :users, :bikers, except: [:destroy] do
     resources :checkouts, only: [:index]
   end
 
-  resources :checkouts, except: [:edit] do
+  resources :checkouts, except: [:edit, :destroy] do
     member do
       post :checkin
     end

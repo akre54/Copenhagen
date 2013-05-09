@@ -7,7 +7,7 @@ class Checkout < ActiveRecord::Base
   belongs_to :staffer, class_name: :User
 
   scope :latest, ->(n = 1) { order('created_at desc').limit(n) }
-  scope :checked_out, where(returned_at: nil)
+  scope :checked_out, -> { where(returned_at: nil) }
   scope :overdue, -> { where("returned_at = NULL AND due_at < ?", Time.now) }
 
   validate :can_be_checked_out, on: :create

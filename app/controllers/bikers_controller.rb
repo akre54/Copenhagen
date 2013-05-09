@@ -45,7 +45,7 @@ class BikersController < ApplicationController
   # POST /bikers
   # POST /bikers.json
   def create
-    @biker = Biker.new(params[:biker])
+    @biker = Biker.new(biker_params.permit(:email, :netid))
 
     respond_to do |format|
       if @biker.save
@@ -64,7 +64,7 @@ class BikersController < ApplicationController
     @biker = Biker.find(params[:id])
 
     respond_to do |format|
-      if @biker.update_attributes(params[:biker])
+      if @biker.update_attributes(biker_params)
         format.html { redirect_to @biker, notice: 'Biker was successfully updated.' }
         format.json { head :no_content }
       else
@@ -74,15 +74,9 @@ class BikersController < ApplicationController
     end
   end
 
-  # DELETE /bikers/1
-  # DELETE /bikers/1.json
-  def destroy
-    @biker = Biker.find(params[:id])
-    @biker.destroy
+  private
 
-    respond_to do |format|
-      format.html { redirect_to bikers_url }
-      format.json { head :no_content }
-    end
+  def biker_params
+    params.required(:bikes).permit(:remember_me, :first_name, :last_name, :affilition, :active, :year_of_graduation)
   end
 end

@@ -1,6 +1,4 @@
 class Bike < ActiveRecord::Base
-  attr_accessible :color, :condition, :location_id, :image_url, :manufacturer, :model, :notes
-
   has_many :checkouts
   belongs_to :location
 

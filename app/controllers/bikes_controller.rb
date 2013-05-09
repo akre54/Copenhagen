@@ -59,7 +59,7 @@ class BikesController < ApplicationController
   # POST /bikes
   # POST /bikes.json
   def create
-    @bike = Bike.new(params[:bike])
+    @bike = Bike.new(bike_params)
 
     respond_to do |format|
       if @bike.save
@@ -76,15 +76,16 @@ class BikesController < ApplicationController
   # PUT /bikes/1.json
   def update
     @bike = Bike.find(params[:id])
+    attrs = bike_params
 
-    if @bike.operational? && params[:online] == false
+    if @bike.operational? && attrs[:online] == false
       @bike.take_offline!
-    elsif !@bike.operational? && params[:online] == true
+    elsif !@bike.operational? && attrs[:online] == true
       @bike.bring_online!
     end
 
     respond_to do |format|
-      if @bike.update_attributes(params)
+      if @bike.update_attributes(attrs)
         format.html { redirect_to @bike, notice: 'Bike was successfully updated.' }
         format.json { render json: @bike, status: :accepted, location: @bike }
       else
@@ -92,5 +93,10 @@ class BikesController < ApplicationController
         format.json { render json: @bike.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+private
+  def bike_params
+    params.required(:bike).permit(:color, :condition, :location_id, :image_url, :manufacturer, :model, :notes)
   end
 end

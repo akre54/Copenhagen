@@ -10,7 +10,10 @@ gem 'devise'
 # db
 gem 'pg'
 
-gem 'sass-rails',   '~> 3.2.3'
+# needs to be pulled out of assets to work
+gem 'sass-rails', '~> 3.2.3'
+
+gem 'strong_parameters'
 
 # Gems used only for assets and not required
 # in production environments by default.

@@ -117,22 +117,10 @@ class CheckoutsController < ApplicationController
     end
   end
 
-  # DELETE /checkouts/1
-  # DELETE /checkouts/1.json
-  def destroy
-    @checkout = Checkout.find(params[:id])
-
-    @checkout.destroy
-
-    respond_to do |format|
-      format.html { redirect_to Checkouts_url }
-      format.json { head :no_content }
-    end
-  end
-
   private
 
   def choose_layout
+    # skip app layout if requesting by xhr (for the new checkout modal)
     request.xhr? ? nil : 'application'
   end
 
