@@ -17,6 +17,8 @@
 # Ignore specific db
 /config/database.yml
 
+# Ignore bower installs
+/vendor/assets/components
 
 # Ignore environment variables (generated on new install)
 /config/config.yml
