@@ -35,7 +35,7 @@ class BikersController < ApplicationController
 
   # POST /bikers{.json}
   def create
-    @biker = Biker.new(biker_params.permit(:email, :netid))
+    @biker = Biker.new(biker_params)
 
     respond_to do |format|
       if @biker.save
@@ -66,6 +66,6 @@ class BikersController < ApplicationController
   private
 
   def biker_params
-    params.required(:bikes).permit(:remember_me, :first_name, :last_name, :affilition, :active, :year_of_graduation)
+    params.required(:biker).permit(:email, :netid, :remember_me, :first_name, :last_name, :affilition, :active, :year_of_graduation)
   end
 end
