@@ -2,7 +2,7 @@ require.config({
   baseUrl: '/assets',
   paths: {
     'jquery': 'jquery/jquery',
-    'jqery-ujs': 'jquery-ujs/src/rails',
+    'jquery-ujs': 'jquery-ujs/src/rails',
     'bootstrap-dropdown': 'twitter/bootstrap/bootstrap-dropdown',
     'bootstrap-modal': 'twitter/bootstrap/bootstrap-modal',
     'handlebars': 'handlebars',
@@ -36,7 +36,7 @@ require.config({
   }
 });
 
-require(['jquery', 'backbone', 'router', 'bootstrap-dropdown'], function($, Backbone, CopeRouter) {
+require(['jquery', 'backbone', 'router', 'jquery-ujs', 'bootstrap-dropdown'], function($, Backbone, CopeRouter) {
   // ensure CSRF token in header before sync
   $.ajaxSetup({
       beforeSend: function(xhr){
