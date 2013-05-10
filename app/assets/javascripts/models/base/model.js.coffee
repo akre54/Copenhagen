@@ -10,5 +10,5 @@ define ['chaplin'], (Chaplin) ->
 
     toJSON: ->
       attrs = {}
-      attrs[@jsonRoot] = _.clone(@attributes)
+      attrs[@jsonRoot] = @serialize()
       attrs

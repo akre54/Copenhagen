@@ -1,8 +1,9 @@
 define [
   'views/base/view',
+  'models/checkout',
   'views/pages/checkouts_new',
   'views/modules/popup'
-], (View, NewCheckoutView, Popup) ->
+], (View, Checkout, NewCheckoutView, Popup) ->
   class BikeRow extends View
 
     events:
@@ -13,9 +14,8 @@ define [
 
     newCheckoutPopup: (e) ->
       popup = new Popup
-      popup.load e.target.href, ->
-        new NewCheckoutView el: popup.el
-
+      popup.load e.target.href, =>
+        new NewCheckoutView el: popup.el, model: new Checkout { bike: @model }
       false
 
     updateLocation: ->
