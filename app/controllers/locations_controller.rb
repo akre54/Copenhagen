@@ -2,8 +2,7 @@ class LocationsController < ApplicationController
   before_filter :require_login
   before_filter :require_admin
 
-  # GET /locations
-  # GET /locations.json
+  # GET /locations{.json}
   def index
     @locations = Location.order(:name)
 
@@ -13,8 +12,7 @@ class LocationsController < ApplicationController
     end
   end
 
-  # GET /locations/1
-  # GET /locations/1.json
+  # GET /locations/1{.json}
   def show
     @location = Location.find(params[:id])
     @bikes = @location.bikes

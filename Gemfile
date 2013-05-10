@@ -10,7 +10,7 @@ gem 'devise'
 # db
 gem 'pg'
 
-# needs to be pulled out of assets to work
+# needs to be pulled out of assets to work on Heroku
 gem 'sass-rails', '~> 3.2.3'
 
 gem 'strong_parameters'

@@ -6,14 +6,10 @@ class CheckoutsController < ApplicationController
 
   helper_method :sort_column, :sort_direction
 
-  # GET /checkouts
-  # GET /checkouts.json
-  # GET /bikes/1/checkouts
-  # GET /bikes/1/checkouts.json
-  # GET /bikers/amk528/checkouts
-  # GET /bikers/amk528/checkouts.json
-  # GET /locations/1/checkouts
-  # GET /locations/1/checkouts.json
+  # GET /checkouts{.json}
+  # GET /bikes/1/checkouts{.json}
+  # GET /bikers/amk528/checkouts{.json}
+  # GET /locations/1/checkouts{.json}
   def index
     unless current_user.admin? || session[:location_id] == params[:location_id]
       redirect_to root, { status: :unauthorized }
@@ -44,8 +40,7 @@ class CheckoutsController < ApplicationController
     end
   end
 
-  # GET /checkouts/1
-  # GET /checkouts/1.json
+  # GET /checkouts/1{.json}
   def show
     @checkout = Checkout.find(params[:id])
 
@@ -56,9 +51,7 @@ class CheckoutsController < ApplicationController
   end
 
   # GET /checkouts/new
-  # GET /checkouts/new.json
   # GET /bikes/1/checkouts/new
-  # GET /bikes/1/checkouts/new.json
   def new
     @checkout = Checkout.new
 
@@ -68,17 +61,10 @@ class CheckoutsController < ApplicationController
       @bikes = current_user.admin? ? Bike.operational : Bike.operational.find_all_by_location_id(session[:location_id])
       @bikes = @bikes.order(:id)
     end
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @checkout }
-    end
   end
 
-  # POST /checkouts
-  # POST /checkouts.json
-  # POST /bikes/1/checkouts
-  # POST /bikes/1/checkouts.json
+  # POST /checkouts{.json}
+  # POST /bikes/1/checkouts{.json}
   def create
     @biker = Biker.find_by_netid(params[:checkout][:biker][:netid])
     @bike = Bike.find(params[:checkout][:bike][:id])
@@ -101,8 +87,7 @@ class CheckoutsController < ApplicationController
     end
   end
 
-  # POST /checkouts/1/checkin
-  # POST /checkouts/1/checkin.json
+  # POST /checkouts/1/checkin{.json}
   def checkin
     @checkout = Checkout.find(params[:id])
 

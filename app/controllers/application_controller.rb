@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   def require_admin
     unless current_user && current_user.admin?
       respond_to do |format|
-        format.html { redirect_to checkouts_path, notice: 'You are not authorized to perform that action.' }
+        format.html { redirect_to bikes_path, notice: 'You are not authorized to perform that action.' }
       end
     end
   end

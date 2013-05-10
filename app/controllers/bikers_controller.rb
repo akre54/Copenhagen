@@ -2,8 +2,7 @@ class BikersController < ApplicationController
   before_filter :require_login
   before_filter :require_admin
 
-  # GET /bikers
-  # GET /bikers.json
+  # GET /bikers{.json}
   def index
     @bikers = Biker.order(:netid)
 
@@ -13,10 +12,8 @@ class BikersController < ApplicationController
     end
   end
 
-  # GET /bikers/1
-  # GET /bikers/1.json
-  # GET /bikers/amk528
-  # GET /bikers/amk528.json
+  # GET /bikers/1{.json}
+  # GET /bikers/amk528{.json}
   def show
     @biker = Biker.find(params[:id])
 
@@ -27,14 +24,8 @@ class BikersController < ApplicationController
   end
 
   # GET /bikers/new
-  # GET /bikers/new.json
   def new
     @biker = Biker.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @biker }
-    end
   end
 
   # GET /bikers/amk528/edit
@@ -42,8 +33,7 @@ class BikersController < ApplicationController
     @biker = Biker.find(params[:netid])
   end
 
-  # POST /bikers
-  # POST /bikers.json
+  # POST /bikers{.json}
   def create
     @biker = Biker.new(biker_params.permit(:email, :netid))
 
@@ -58,8 +48,7 @@ class BikersController < ApplicationController
     end
   end
 
-  # PUT /bikers/1
-  # PUT /bikers/1.json
+  # PUT /bikers/1{.json}
   def update
     @biker = Biker.find(params[:id])
 

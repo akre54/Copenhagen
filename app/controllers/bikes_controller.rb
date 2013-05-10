@@ -2,8 +2,7 @@ class BikesController < ApplicationController
   before_filter :require_login
   before_filter :require_admin, except: [:index, :show]
 
-  # GET /bikes
-  # GET /bikes.json
+  # GET /bikes{.json}
   def index
     @bikes = Bike.order(:id)
 
@@ -29,8 +28,7 @@ class BikesController < ApplicationController
     render 'index'
   end
 
-  # GET /bikes/1
-  # GET /bikes/1.json
+  # GET /bikes/1{.json}
   def show
     @bike = Bike.find(params[:id])
 
@@ -41,14 +39,8 @@ class BikesController < ApplicationController
   end
 
   # GET /bikes/new
-  # GET /bikes/new.json
   def new
     @bike = Bike.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @bike }
-    end
   end
 
   # GET /bikes/1/edit
@@ -56,8 +48,7 @@ class BikesController < ApplicationController
     @bike = Bike.find(params[:id])
   end
 
-  # POST /bikes
-  # POST /bikes.json
+  # POST /bikes{.json}
   def create
     @bike = Bike.new(bike_params)
 
@@ -72,8 +63,7 @@ class BikesController < ApplicationController
     end
   end
 
-  # PUT /bikes/1
-  # PUT /bikes/1.json
+  # PUT /bikes/1{.json}
   def update
     @bike = Bike.find(params[:id])
     attrs = bike_params
