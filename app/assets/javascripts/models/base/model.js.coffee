@@ -1,4 +1,4 @@
-define ['chaplin'], (Chaplin) ->
+define ['chaplin', 'underscore'], (Chaplin, _) ->
   class BaseModel extends Chaplin.Model
 
     # the json key of the req to / response from server

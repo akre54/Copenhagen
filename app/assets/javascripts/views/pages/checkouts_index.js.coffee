@@ -8,7 +8,7 @@ require ['views/base/view', 'd3'], (View, d3) ->
     setupChart: ->
       w = 20
       h = 80
-      data = COPE.checkouts || {} # fallback is temporary since appears on every page
+      data = COPE.checkouts
 
       x = d3.scale.linear()
         .domain([0, 1])
