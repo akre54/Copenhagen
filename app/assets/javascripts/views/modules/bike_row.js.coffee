@@ -15,7 +15,8 @@ define [
     newCheckoutPopup: (e) ->
       popup = new Popup
       popup.load e.target.href, =>
-        new NewCheckoutView el: popup.el, model: new Checkout { bike: @model }
+        cv = new NewCheckoutView el: popup.el, model: new Checkout { bike: @model }
+        cv.on 'complete', popup.close
       false
 
     updateLocation: ->

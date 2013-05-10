@@ -33,5 +33,5 @@ define [
       unless @model.has('bike')
         attrs.bike = new Bike id: @$('#checkout_bike_id').val()
 
-      @model.save(attrs)
+      @model.save(attrs).done => @trigger('complete')
       false
