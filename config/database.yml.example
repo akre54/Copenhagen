@@ -1,0 +1,17 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: copenhagen_development
+  pool: 5
+  username: postgres
+  password: 
+  min_messages: warning
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: copenhagen_test
+  pool: 5
+  username: postgres
+  password:
+  min_messages: warning
