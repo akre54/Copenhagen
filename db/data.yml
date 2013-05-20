@@ -4,7 +4,6 @@ bikes:
   columns:
   - id
   - color
-  - condition
   - location_id
   - created_at
   - updated_at
@@ -14,7 +13,6 @@ bikes:
   records: 
   - - '1'
     - blue
-    - fair
     - '3'
     - '2013-03-03 07:16:58.875494'
     - '2013-03-04 06:11:47.823786'
@@ -23,7 +21,6 @@ bikes:
     - Cruiser
   - - '2'
     - purple
-    - good, some scratches
     - '1'
     - '2013-03-04 01:03:55.241653'
     - '2013-03-04 06:13:40.55021'
@@ -32,7 +29,6 @@ bikes:
     - Roxie Cruiser
   - - '3'
     - red
-    - operational
     - '3'
     - '2013-03-05 02:10:24.668055'
     - '2013-03-05 02:11:39.129483'
@@ -45,30 +41,18 @@ users:
   columns:
   - id
   - netid
-  - first_name
-  - last_name
-  - year_of_graduation
-  - email_address
-  - affilition
+  - email
   - created_at
   - updated_at
   records: 
   - - '1'
     - ews236
-    - Eric
-    - Sluyter
-    - '2013'
     - wondersluyter@gmail.com
-    - undergraduate
     - '2013-03-05 02:33:42.926768'
     - '2013-03-05 02:33:42.926768'
   - - '2'
     - amk528
-    - Adam
-    - Krebs
-    - '2012'
     - krebsadam@gmail.com
-    - undergraduate
     - '2013-03-05 02:37:39.191808'
     - '2013-03-05 02:37:39.191808'
 
