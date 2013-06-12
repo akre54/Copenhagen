@@ -6,6 +6,8 @@
     "jquery-ujs": "git@github.com:rails/jquery-ujs.git",
     "typeahead.js": "~0.9.1",
     "typeahead-bootstrap.css": "jharding/typeahead.js-bootstrap.css",
+    "x-editable": "~1.4.4",
+    "wysihtml5": "0.3.0",
     "moment": "2",
     "d3": "3",
     "chaplin": "0.9.0",
