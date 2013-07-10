@@ -1,0 +1,12 @@
+development: &pg
+  adapter: postgresql
+  encoding: unicode
+  database: copenhagen_development
+  pool: 5
+  host: localhost
+  username: adam
+  password:
+  min_messages: warning
+test:
+  <<: *pg
+  database: copenhagen_test
