@@ -19,7 +19,7 @@
   <td>
     <% if bike.operational? %>
       <% if bike.checked_out? %>
-        <%= link_to "check in", checkin_checkout_path(bike.active_checkout), method: :post %>
+        <%= link_to "check in", checkin_checkout_path(bike.active_checkout), method: :delete %>
       <% else %>
         <%= link_to "check out", new_bike_checkout_path(bike), data: { action: 'create-checkout' } %>
       <% end %>

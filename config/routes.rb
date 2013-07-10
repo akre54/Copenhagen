@@ -21,7 +21,7 @@ Copenhagen::Application.routes.draw do
 
   resources :checkouts, except: [:edit, :destroy] do
     member do
-      post :checkin
+      delete '', to: 'checkouts#checkin', as: :checkin
     end
   end
 end
